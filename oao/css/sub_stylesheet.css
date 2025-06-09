@@ -1,0 +1,537 @@
+@charset "UTF-8";
+
+a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    overflow-x: hidden;
+}
+
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+
+/* 헤더 영역 */
+
+#header {
+    width: 1920px;
+    height: 100px;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    
+    background-image: linear-gradient(to bottom, rgba(44, 44, 44, 1), rgba(44, 44, 44, 0));
+}
+
+#header > div {
+    display: flex;
+    gap: 200px;
+}
+
+#header > div > h1 {
+    height: 100px;
+    padding: 25px 0;
+    box-sizing: border-box;
+}
+
+#header::before {
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    
+    background-color: rgba(44, 44, 44, 0.8);
+    z-index: 1;
+}
+
+#header.open::before {
+    height: 190px;
+}
+
+#nav {
+    display: flex;
+    gap: 30px;
+    z-index: 1;
+}
+
+#gnb {
+    display: flex;
+    gap: 20px;
+}
+
+#gnb > li {
+    display: block;
+    padding: 25px 0;
+    box-sizing: border-box;
+
+    position: relative;
+}
+
+#gnb > li > a {
+    width: 120px;
+    height: 50px;
+    
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+
+    position: relative;
+}
+
+#gnb > li > a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    
+    background-color: #F2EFEA;
+
+    transition: width 0.3s ease-in-out;
+}
+
+#gnb > li > a:hover::after {
+    content: "";
+    width: 100px;
+    height: 2px;
+
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    
+    background-color: #F2EFEA;
+}
+
+#gnb > li > .gnb-depth {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 2;
+}
+
+#header.open #gnb > li > .gnb-depth {
+    display: block;
+}
+
+.gnb-depth {
+    width: 680px;
+    height: 190px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.gnb-depth > li {
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.gnb-depth > li > a {
+    width: 120px;
+    height: 50px;
+    box-sizing: border-box;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+
+    position: relative;
+}
+
+.gnb-depth > li > a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+
+    position: absolute;
+    left: 10px;
+    bottom: 4px;
+    
+    background-color: #F2EFEA;
+    transition: width 0.3s ease-in-out;
+}
+
+.gnb-depth > li > a:hover::after {
+    content: "";
+    width: 100px;
+    height: 2px;
+
+    position: absolute;
+    left: 10px;
+    bottom: 4px;
+    
+    background-color: #F2EFEA;
+}
+
+#nav > ul:last-child {
+    display: flex;
+    gap: 20px;
+
+    padding: 30px 0;
+    box-sizing: border-box;
+}
+
+#nav > ul:last-child > li {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+#nav > ul:last-child > li > a {
+    width: 24px;
+    height: 24px;
+}
+
+#nav > ul:last-child > li > a > span {
+    visibility: hidden;
+}
+
+#nav > ul:last-child > li:first-child {
+    width: 24px;
+    background-position: center;
+    background-image: url(../images/icon_instagram.png);
+    background-repeat: no-repeat;
+}
+
+#nav > ul:last-child > li:last-child {
+    width: 24px;
+    background-position: center;
+    background-image: url(../images/icon_login.png);
+    background-repeat: no-repeat;
+}
+
+
+
+/* content 영역 */
+
+/* 페이지 이동 경로 영역 */
+
+#breadcrumb {
+    width: 1200px;
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+#breadcrumb > ol {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+#breadcrumb > ol > li > a {
+    color: #fff;
+}
+
+#breadcrumb > ol > li { position: relative; }
+
+#breadcrumb > ol > li::before {
+    content: "";
+
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+
+    position: absolute;
+    left: -20px;
+
+    background-image: url(../images/icon_next.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+
+}
+
+#breadcrumb > ol > li:first-child:before { display: none; }
+
+#breadcrumb > ol > li:first-child > a {
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/icon_home.png);
+    background-repeat: no-repeat;
+}
+
+#breadcrumb > ol > li > a > span {
+    visibility: hidden;
+}
+
+
+/* 배너 영역 */
+#banner {
+    width: 1920px;
+    height: 780px;
+    box-sizing: border-box;
+    position: relative;
+    
+    background-image: url(../images/content1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#banner > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    text-align: center;
+}
+
+#banner > div > h2 {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Lora', 'Times New Roman', serif;
+    color: #fff;
+    
+    margin-bottom: 20px;
+}
+
+#banner > div > p {
+    white-space: pre-line;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+
+
+/* story 영역 */
+
+#story {
+    padding: 300px 0 200px 0;
+
+    display: flex;
+    gap: 60px;
+}
+
+#story > h2 {
+    padding: 100px 0;
+
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Lora', 'Times New Roman', serif;
+}
+
+#story > div:last-child {
+    padding: 200px 0 0 40px;
+
+    position: relative;
+}
+
+.text > h3 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.text > p {
+    margin-top: 20px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.text > p > strong { font-weight: 600; }
+
+#story > div:first-child { position: relative; }
+
+#story > div:first-child::before {
+    content: "";
+    display: block;
+    width: 689px;
+    height: 278px;
+
+    position: absolute;
+    right: -100px;
+    top: -200px;
+
+    background-image: url(../images/content2_01.png);
+    background-repeat: no-repeat;
+}
+
+#story > div:first-child::after {
+    content: "";
+    display: block;
+    width: 689px;
+    height: 277px;
+
+    position: absolute;
+    right: -100px;
+    bottom: 0;
+
+    background-image: url(../images/content2_02.png);
+    background-repeat: no-repeat;
+}
+
+#story > div:last-child::before {
+    content: "";
+    display: block;
+    width: 679px;
+    height: 187px;
+
+    position: absolute;
+    left: -30px;
+    bottom: 230px;
+
+    background-image: url(../images/content2_03.png);
+    background-repeat: no-repeat;
+}
+
+.fade-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.6s ease;
+}
+
+.fade-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-bottom {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.fade-bottom.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.6s ease;
+}
+
+.fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+/* philosophy 영역 */
+#philosophy { position: relative; }
+
+#philosophy > h2 {
+    
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Lora', 'Times New Roman', serif;
+}
+
+.phil-content {
+    height: 536px;
+    margin-top: 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+}
+
+#philosophy > div > div:last-child {
+    margin-bottom: 130px;
+}
+
+#philosophy > div > div:nth-child(2) {
+    padding-left: 60px;
+}
+
+.phil-content > img.left-overflow {
+    margin-left: -280px;
+    transform: translateX(-120px);
+}
+
+.phil-content > img.right-overflow {
+    margin-right: -280px;
+    transform: translateX(140px);
+}
+
+
+
+/* 푸터 영역 */
+#footer {
+    width: 100%;
+    height: 200px;
+    padding: 40px;
+    box-sizing: border-box;
+
+    background-color: #a8a29e;
+}
+
+#footer > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer > div > div {
+    display: flex;
+    gap: 100px;
+}
+
+#footer > div > div:first-child > img {
+    height: 38px;
+    padding-top: 40px;
+}
+
+#footer > div > div:first-child > div > ul { margin-bottom: 16px; }
+
+#footer > div > div:first-child > div > ul > li { 
+    margin-bottom: 8px; 
+    font-size: 14px;
+    color: #fff;
+}
+
+#footer > div > div:first-child > div > p { 
+    color: #fff;
+    font-size: 14px;
+}
+
+#footer > div > div:last-child > ul:first-child {
+    padding-top: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+#footer > div > div:last-child > ul:first-child > li { margin-bottom: 12px;}
+
+#footer > div > div:last-child > ul:first-child > li:first-child { margin-top: 12px;}
+
+#footer > div > div:last-child > ul:first-child > li > a { 
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}
+
+#footer > div > div:last-child > ul:last-child { padding-top: 10px; }
+
+#footer > div > div:last-child > ul:last-child > li {
+    margin-bottom: 12px;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}

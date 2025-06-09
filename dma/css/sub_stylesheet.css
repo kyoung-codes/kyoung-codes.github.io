@@ -1,0 +1,520 @@
+@charset "UTF-8";
+
+a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+body {
+    color: #333;
+    font-family: 'NotoSans', '나눔고딕', Nanum Gothic, Malgun gothic, '맑은고딕', Dotum, '돋움', arial, sans-serif;;
+
+    overflow-x: hidden;
+}
+
+.inner {
+    width: 1500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* header 영역 */
+#header {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    background-color: #f2e6d9;
+}
+
+#header > div {
+    display: flex;
+    gap: 120px;
+}
+
+#header > div > h1 {
+    padding-top: 20px;
+}
+
+#header > div > div {
+    display: flex;
+    gap: 40px;
+}
+
+#nav {
+    width: 960px;
+    height: 100px;
+
+    z-index: 1;
+}
+
+#header::before {
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100vw;
+    height: 0;
+    
+    background-color: #f2e6d9;
+    z-index: 1;
+}
+
+#header.open::before {
+    border-top: 1px solid #fff;
+    height: 270px;
+}
+
+#main_menu {
+    display: flex;
+    height: 100px;
+}
+
+#main_menu > li {
+    width: 160px;
+    height: 50px;
+    padding: 25px 0;
+    box-sizing: content-box;
+
+    display: block;
+    position: relative;
+}
+
+#main_menu > li > a {    
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#main_menu > li > a:hover {
+    color: #B2151A;
+}
+
+#main_menu > li > .sub_menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+#header.open #main_menu > li > .sub_menu {
+    display: block;
+    height: 270px;
+}
+
+.sub_menu {
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.sub_menu > li > a {
+    width: 160px;
+    height: 50px;
+    
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.sub_menu > li > a:hover {
+    color: #B2151A;
+}
+
+
+#header_right {
+    padding-top: 40px;
+    display: flex;
+}
+
+#header_right > li {
+    margin-right: 8px;
+}
+
+#header_right > li > a {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#header_right > li > a > span {
+    visibility: hidden;
+}
+
+#header_right > li:nth-child(1) {
+    width: 24px;
+    background-image: url(../images/icon_sns_insta.png);
+    background-repeat: no-repeat;
+}
+
+#header_right > li:nth-child(2) {
+    width: 24px;
+    background-image: url(../images/icon_sns_facebook.png);
+    background-repeat: no-repeat;
+}
+
+#header_right > li:nth-child(3) > a {
+    padding-left: 24px;
+
+    background: url("../images/icon_login.png") left /20px no-repeat;
+}
+
+#header_right > li:nth-child(4) {
+    margin-right: 0;
+}
+
+
+/* content 영역 */
+
+/* 페이지이동경로 영역 */
+
+#breadcrumb {
+    width: 100%;
+
+    background-color: #f2e6d9;
+}
+
+#breadcrumb > ol {
+    padding: 10px 0;
+    height: 60px;
+    box-sizing: border-box;
+
+    border-top: 1px solid #fff;
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+#breadcrumb > ol > li {
+    position: relative;
+    font-weight: 600;
+}
+
+#breadcrumb > ol > li:nth-child(1) {
+    height: 24px;
+    background-image: url(../images/icon_home.png);
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#breadcrumb > ol > li:nth-child(1)::before {
+    display: none;
+}
+
+#breadcrumb > ol > li::before {
+    content: "";
+
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+
+    position: absolute;
+    left: -16px;
+
+    background-image: url(../images/icon_next.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#breadcrumb span {
+    visibility: hidden;
+}
+
+
+/* 예정 전시 exhibition_upcoming 영역 */
+#exhibition_upcoming {
+    margin-top: 80px;
+    margin-bottom: 150px;
+}
+
+#exhibition_upcoming > h2 {
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+/* 검색필터 영역 */
+#search_filter {
+    width: 1480px;
+    height: 250px;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+    margin-left: 16px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#search_filter > div:nth-child(1) > div:nth-child(3) { margin-bottom: 0;}
+
+.low {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+
+.low > h3 {
+    font-weight: 600;
+}
+
+.low > div > label {
+    display: inline-block;
+    padding: 6px;
+    margin-right: 16px;
+
+    border: 1px solid #333;
+    border-radius: 4px;
+
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.low > div > label:hover {
+    background-color: #eeeeee;
+}
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"]:checked + label {
+    display: inline-block;
+    background-color: #f2e6d9;
+    border-color: #B2151A;
+    color: #333;
+}
+
+#search_filter > div:last-child > input {
+    display: block;
+    width: 230px;
+    height: 35px;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+    border: 1px solid #333;
+}
+
+#search_filter > div:last-child > button {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    margin-left: 150px;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #B2151A;
+    border: none;
+
+    cursor: pointer;
+}
+
+
+/* list_grid 영역 */
+#list_grid {
+    width: 1500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    height: 1202px;
+    margin-bottom: 40px;
+}
+
+.list {
+    display: flex;
+    width: 730px;
+    gap: 40px;
+    padding: 6px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.list:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.list > a > img {
+    width: 255px;
+}
+
+.list > div {
+    padding-top: 14px;
+    box-sizing: border-box;
+}
+
+.list > div > span {
+    display: inline-block;
+    padding: 6px 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #B2151A;
+    border-radius: 16px;
+    border: 1px solid #B2151A;
+}
+
+.list > div > a > h3 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 600;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.list > div > ul > li {
+    margin-bottom: 16px;
+    color: #666666;
+}
+
+.list > div > p {
+    color: #666666;
+    line-height: 1.5;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+#exhibition_upcoming > p {
+    text-align: center;
+    
+}
+
+/* footer 영역 */
+#footer {
+    padding-top: 40px;
+    height: 200px;
+    box-sizing: border-box;
+
+    background-color: #d4a373;
+    color: #fff;
+}
+
+#footer a {
+    color: #fff;
+}
+
+#footer > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer > div > ul > li {
+    margin-bottom: 12px;
+}
+
+#footer > div > ul > li:last-child {
+    font-size: 14px;
+    color: #ededed;
+    margin-bottom: 0;
+}
+
+#footer > div > div {
+    display: flex;
+    gap: 60px;
+}
+
+#footer > div > div > ul {
+    padding-top: 50px;
+    display: flex;
+    gap: 16px;
+}
+
+#dropdown {
+    padding-top: 40px;
+    display: inline-block;
+    position: relative;
+}
+
+#dropdown > button {
+    width: 150px;
+    height: 36px;
+    padding-right: 24px;
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+
+    border: 1px solid #fff;
+    background-color: transparent;
+
+    background-image: url(../images/icon_down.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: right;
+}
+
+#dropdown_list {
+    visibility: hidden;
+
+    position: absolute;
+    top: -112%;
+    left: 0;
+    
+    background-color: #d4a373;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#dropdown_list.on {
+    visibility: visible;
+
+    position: absolute;
+    top: -112%;
+    left: 0;
+    
+    background-color: #d4a373;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#dropdown_list > li {
+    width: 150px;
+    height: 36px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    text-align: center;
+
+    position: relative;
+}
+
+#dropdown_list > li > a {
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 6px;
+}
+
+#dropdown_list > li > a::after {
+    content: "";
+
+    display: block;
+    width: 150px;
+
+    position: absolute;
+    bottom: -2px;
+
+    border-bottom: 1px solid #fff;
+}
+
+#dropdown_list > li > a:hover {
+    color: #B2151A;
+}

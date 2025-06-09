@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예정 전시 | 대전시립미술관</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/sub_stylesheet.css">
+    <script src="https://code.jquery.com/jquery.min.js" defer></script>
+    <script src="js/sub_script.js" defer></script>
+</head>
+<body>
+    
+    <header id="header">
+        <div class="inner">
+            <h1><a href="index.html"><img src="images/logo.png" alt="대전시립미술관 로고"></a></h1>
+            <div>
+                <nav id="nav">
+                    <ul id="main_menu">
+                        <li><a href="sub.html">관람</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">대전시립미술관</a></li>
+                                <li><a href="sub.html">대전창작센터</a></li>
+                                <li><a href="sub.html">열린수장고</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="sub.html">전시</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">전시 일정</a></li>
+                                <li><a href="sub.html">연간 전시 일정</a></li>
+                                <li><a href="sub.html">대전과학예술비엔날래</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="sub.html">교육·행사</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">성인·전문인</a></li>
+                                <li><a href="sub.html">어린이·가족</a></li>
+                                <li><a href="sub.html">학술 프로그램</a></li>
+                                <li><a href="sub.html">문화행사</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="sub.html">소식·참여</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">소식</a></li>
+                                <li><a href="sub.html">보도자료</a></li>
+                                <li><a href="sub.html">대관 안내</a></li>
+                                <li><a href="sub.html">미술관에 바란다</a></li>
+                                <li><a href="sub.html">인터쉽</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="sub.html">소장자료</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">소장품 검색</a></li>
+                                <li><a href="sub.html">도서 검색</a></li>
+                                <li><a href="sub.html">아카이브</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="sub.html">미술관 소개</a>
+                            <ul class="sub_menu">
+                                <li><a href="sub.html">인사말</a></li>
+                                <li><a href="sub.html">MI소개</a></li>
+                                <li><a href="sub.html">연혁 및 시설</a></li>
+                                <li><a href="sub.html">조직 및 주요업무</a></li>
+                                <li><a href="sub.html">후훤회</a></li>
+                           </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <ul id="header_right">
+                    <li><a href="sub.html"><span>Instagram</span></a></li>
+                    <li><a href="sub.html"><span>Facebook</span></a></li>
+                    <li><a href="sub.html">로그인</a></li>
+                    <li><a href="sub.html">ENGLISH</a></li>
+                </ul>
+            </div>
+        </div> <!--.inner-->
+    </header> <!--#header-->
+    
+    <main id="content">
+        <nav id="breadcrumb">
+            <ol class="inner">
+                <li><a href=""><span>home</span></a></li>
+                <li><a href="">전시</a></li>
+                <li><a href="">전시 일정</a></li>
+            </ol>
+        </nav> <!--#breadcrumb-->
+        <section id="exhibition_upcoming" class="inner">
+            <h2>전시 일정</h2>
+            <form id="search_filter">
+                <div>
+                    <div class="low">
+                        <h3>전시 분류</h3>
+                        <div>
+                            <input type="checkbox" id="category_all" name="category" value="all"><label for="category_all">전체</label>
+                            <input type="checkbox" id="category_current" name="category" value="current"><label for="category_current">현재 전시</label>
+                            <input type="checkbox" id="category_upcoming" name="category" value="upcoming"><label for="category_upcoming">예정 전시</label>
+                            <input type="checkbox" id="category_past" name="category" value="past"><label for="category_past">지난 전시</label>
+                        </div>
+                    </div>
+                    <div class="low">
+                        <h3>전시 장소</h3>
+                        <div>
+                            <input type="checkbox" id="location_all" name="location" value="all"><label for="location_all">전체</label>
+                            <input type="checkbox" id="location_museum" name="location" value="museum"><label for="location_museum">대전시립미술관</label>
+                            <input type="checkbox" id="location_storage" name="location" value="storage"><label for="location_storage">열린수장고</label>
+                            <input type="checkbox" id="location_center" name="location" value="center"><label for="location_center">대전창작센터</label>
+                        </div>
+                    </div>
+                    <div class="low">
+                        <h3>전시 유형</h3>
+                        <div>
+                            <input type="checkbox" id="type_all" name="type" value="all"><label for="type_all">전체</label>
+                            <input type="checkbox" id="type_painting" name="type" value="painting"><label for="type_painting">회화</label>
+                            <input type="checkbox" id="type_photo" name="type" value="photo"><label for="type_photo">사진</label>
+                            <input type="checkbox" id="type_drawing" name="type" value="drawing"><label for="type_drawing">드로잉·판화</label>
+                            <input type="checkbox" id="type_sculpture" name="type" value="sculpture"><label for="type_sculpture">입체(조각,설치,공예)</label>
+                            <input type="checkbox" id="type_sound" name="type" value="sound"><label for="type_sound">사운드·영상</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" placeholder="검색어를 입력하세요">
+                    <button type="submit">이동하기</button>
+                </div>
+            </form>
+            <div id="list_grid">
+                <div class="list">
+                    <a href="#"><img src="images/exhibit_3.png" alt="'DMA 캠프 2025 공백을 채우십시오' 전시 포스터 이미지"></a>
+                    <div>
+                        <span>창작센터전시(분관)</span>
+                        <a href="#"><h3>열린수장고 기획전 &Lt;DMA 캠프 2025_공백을 채우십시오&Gt;</h3></a>
+                        <ul>
+                            <li>2025.03.25 - 2025.05.06</li>
+                            <li>전시 장소 : 대전창작센터</li>
+                            <li>관람료 : 무료</li>
+                            <li>부문 : 입체(조각,설치,공예), 사운드·영상</li>
+                            <li>작품수 : 20점</li>
+                        </ul>
+                        <p>기획의도: 인류의 문명이 이 땅 위에서 창성하고 쇠락하고 소멸하고 다시 창성함을 반복하는 그 역사의 시간 속에는, 수많은 ‘텅 빈 장소’가 존재한다. 가령 그것은 역사의 틈새에 끼인 버려지거나 잊혀진 미시사의 공간이기도 하며, 동시에 그것은 이념적으로 정의되지 않거나 구현되지 않은 공간이기도 하다.</p>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="#"><img src="images/exhibit_5.png" alt="'엉뚱한 자연' 전시 포스터 이미지"></a>
+                    <div>
+                        <span>소장품전시</span>
+                        <a href="#"><h3>열린수장고 기획전 &Lt;엉뚱한 자연&Gt;</h3></a>
+                        <ul>
+                            <li>2025.04.01 - 2025.08.10</li>
+                            <li>전시 장소 : 열린수장고</li>
+                            <li>관람료 : 무료</li>
+                            <li>부문 : 회화</li>
+                            <li>작품수 : 12점</li>
+                        </ul>
+                        <p>기획의도: 대전시립미술관 열린수장고는 2025년 첫 번째 기획전시로 대전지역미술을 대표하는 원로작가 유근영의 《엉뚱한 자연》을 개최한다. 1948년 대전에서 출생한 유근영은 1970년대부터 현재까지 대전 현대미술의 태동과 전개에 있어 핵심적인 역할을 맡아왔다. 작가는 지역미술계에 대한 관심을 지속하는 동시에 자신만의 예술 언어를 구체적으로 구축해 나갔다. </p>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="#"><img src="images/exhibit_4.png" alt="'불멸의 화가 반 고흐' 전시 포스터 이미지"></a>
+                    <div>
+                        <span>특별전시</span>
+                        <a href="#"><h3>2025 세계유명미술특별전 &Lt;불멸의 화가 반 고흐&Gt;</h3></a>
+                        <ul>
+                            <li>2025.03.25 - 2025.06.22</li>
+                            <li>전시 장소 : 대전시립미술관 1,2,3,4전시실</li>
+                            <li>관람료 : 성인 22,000원 어린이 및 청소년 17,000원</li>
+                            <li>부문 : 회화</li>
+                            <li>작품수 : 76점</li>
+                        </ul>
+                        <p>기획의도: 2025년 3월 25일부터 6월 22일까지 휴관일 없이 대전시립미술관에서 열리는 《불멸의 화가 반 고흐》는 반 고흐의 예술을 종합적으로 고찰할 수 있는 국내 유일의 회고전입니다. 이번 전시에서는 네덜란드 크뢸러 뮐러 미술관의 소장품 중 76점의 걸작을 선보이며, 그동안 국내에서 보기 힘들었던 고흐의 대표작들을 직접 감상할 수 있는 특별한 기회를 제공합니다. </p>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="#"><img src="images/exhibit_6.png" alt="'DMA 소장품:흔적' 전시 포스터 이미지"></a>
+                    <div>
+                        <span>소장품전시</span>
+                        <a href="#"><h3>열린수장고 상설전 &Lt;DMA 소장품 하이라이트 2025:흔적&Gt;</h3></a>
+                        <ul>
+                            <li>2025.04.01 - 2025.12.21</li>
+                            <li>전시 장소 : 열린수장고</li>
+                            <li>관람료 : 무료</li>
+                            <li>부문 : 사진, 드로잉·판화</li>
+                            <li>작품수 : 70점</li>
+                        </ul>
+                        <p>기획의도: 2022년 개관 이후 열린수장고에서는 미술관 소장품을 통해 동시대 미술의 다양한 흐름을 소개해 왔다. 이번 전시 《DMA 소장품 하이라이트 2025: 흔적》은 사진, 드로잉, 판화라는 매체를 새로운 시각으로 조망한다. 전시는 이 세 가지 매체가 예술적 가치를 인정받아 온 과정을 '흔적'이라는 개념을 통해 탐구한다. </p>
+                    </div>
+                </a></div>
+                <div class="list">
+                    <a href="#"><img src="images/exhibit_2.png" alt="'금 밟고, 폴짝!' 전시 포스터 이미지"></a>
+                    <div>
+                        <span>어린이전시</span>
+                        <a href="#"><h3>2025 어린이미술기획전 &Lt;금 밟고, 폴짝!&Gt;</h3></a>
+                        <ul>
+                            <li>2025.03.25 - 2025.06.22</li>
+                            <li>전시 장소 : 대전시립미술관 5전시실</li>
+                            <li>관람료 : 무료</li>
+                            <li>부문 : 회화, 설치</li>
+                            <li>작품수 : 24점</li>
+                        </ul>
+                        <p>기획의도: 《금 밟고, 폴짝!》은 ‘금을 긋고, 그 경계를 넘거나 밟지 않는 놀이’에서 출발하여, 규칙의 창조와 변화를 통해 확장되는 놀이의 유연함을 이야기한다. 바닥이나 책상 위에 금을 긋고, 그 경계를 넘거나 피해 다니며 놀던 기억을 떠올려 보자. 이 단순한 놀이 안에는 우리가 스스로 규칙을 만들고 수정하며, 새로운 놀이를 만들어가는 가능성이 담겨 있다.</p>
+                    </div>
+                </div>
+            </div> <!--#list_grid-->
+            <p>1</p>
+        </section>
+    </main> <!--#content-->
+
+    <footer id="footer">
+        <div class="inner">
+            <ul>
+                <li>(35204) 대전광역시 서구 둔산대로 155(만년동)</li>
+                <li>대표전화 042-120(콜센터)</li>
+                <li>대표메일 dma1998@korea.kr</li>
+                <li>전시안내 042-270-7370</li>
+                <li>COPYRIGHT 2019 (C) DAEJEON METROPOLITAN CITY. ALL RIGHTS RESERVED.</li>
+            </ul>
+            <div>
+                <ul>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">사이트이용약관</a></li>
+                    <li><a href="#">영상정보처리기기운영·관리방침</a></li>
+                    <li><a href="#">뷰어프로그램</a></li>
+                </ul>
+                <div id="dropdown">
+                    <button>문화기관협의회</button>
+                    <ul id="dropdown_list">
+                        <li><a href="https://www.daejeon.go.kr/">대전광역시청</a></li>
+                        <li><a href="https://dcaf.or.kr/web/index.do">대전문화재단</a></li>
+                        <li><a href="https://www.artdj.kr/html/artdj/">대전시립예술단</a></li>
+                        <li><a href="https://www.dcckorea.or.kr/index.do">대전컨벤션센터</a></li>
+                        <li><a href="https://www.dile.or.kr/">대전평생교육진흥원</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> <!--.inner-->
+    </footer>
+
+</body>
+</html>
