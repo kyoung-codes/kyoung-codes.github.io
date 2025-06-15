@@ -43,14 +43,6 @@ $(function () {
 
 
 
-// gauge bar track
-$(function() {
-
-})
-
-
-
-
 
 // design slide
 $(function() {
@@ -98,6 +90,31 @@ $(function() {
   updateSlide(0);
 })
 
+
+// mobile_design 초기 상태
+window.addEventListener('load', () => {
+  const grid = document.querySelector('#grid');
+  const wrapper = document.querySelector('#mobile_design');
+
+  const halfHeight = grid.scrollHeight / 2;
+  wrapper.style.maxHeight = `${halfHeight}px`; // 처음엔 절반만 보이도록
+});
+
+// 더보기 버튼
+document.getElementById('morebtn').addEventListener('click', function () {
+  const wrapper = document.querySelector('#mobile_design');
+  const grid = document.querySelector('#grid');
+
+  const isExpanded = wrapper.classList.toggle('expanded');
+
+  if (isExpanded) {
+    wrapper.style.maxHeight = `${grid.scrollHeight}px`;
+    this.textContent = '접기';
+  } else {
+    wrapper.style.maxHeight = `${grid.scrollHeight / 2}px`;
+    this.textContent = '더보기';
+  }
+});
 
 
 
