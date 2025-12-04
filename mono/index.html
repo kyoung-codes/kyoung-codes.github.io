@@ -4,25 +4,1061 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONOHOUSE 메인 홈페이지</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="https://code.jquery.com/jquery.min.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <div id="container">
-        <header>
-            <nav>
-                <button><img src="images/icon_menu.svg" alt="메뉴탭 아이콘 이미지"></button>
-                <ul></ul>
-            </nav>
+        <header id="header">
+            <button type="button" id="open" class="mobile" aria-controls="sidebar" aria-label="사이드바 열기"></button>
+            
             <h1><a href="#"><img src="images/logo.png" alt="모노하우스 로고"></a></h1>
-        </header>
-        <main>
-            <section id="banner"></section>
-            <section id="guide"></section>
-            <section id="new"></section>
-            <section id="best"></section>
-            <section id="mini_banner"></section>
-            <section id="review"></section>
-        </main>
-        <footer></footer>
-    </div>
+
+            <form id="search" class="web" role="search" aria-label="제품 검색">
+                    <input id="q" name="q" type="text" placeholder="검색">
+            </form> <!--#search_box-->
+
+            <div>
+                <button type="button" id="wish" class="web" aria-controls="wish" aria-label="찜 열기"></button>
+                <button type="button" id="shopping_cart" aria-controls="shopping_cart" aria-label="장바구니 열기"></button>
+                <button type="button" id="mypage" class="web" aria-controls="mypage" aria-label="마이페이지"></button>
+            </div>
+        </header> <!--#header-->
+
+        <nav id="nav" class="web">
+            <button type="button" id="category" aria-controls="category" aria-label="카테고리 버튼" aria-expanded="false">카테고리</button>
+
+            <ul id="main_nav">
+                <li><a href="#">SEASON</a>
+                    <ul class="sub_nav">
+                        <li><a href="#">여름 이불</a></li>
+                        <li><a href="#">차렵 이불</a></li>
+                        <li><a href="#">극세사 이불</a></li>
+                    </ul> <!--#sub_nav-->
+                </li> 
+                <li><a href="#">BEST</a></li>
+                <li><a href="#">SALE</a></li>
+                <li><a href="#">침구</a>
+                    <ul class="sub_nav">
+                        <li><a href="#">호텔 침구</a></li>
+                        <li><a href="#">신혼 침구</a></li>
+                        <li><a href="#">디자인 침구</a></li>
+                        <li><a href="#">모달 침구</a></li>
+                        <li><a href="#">린넨 침구</a></li>
+                    </ul> <!--#sub_nav-->
+                </li>
+                <li><a href="#">패드</a></li>
+                <li><a href="#">커버류</a>
+                    <ul class="sub_nav">
+                        <li><a href="#">매트리스 커버</a></li>
+                        <li><a href="#">요 커버</a></li>
+                        <li><a href="#">베개 커버</a></li>
+                    </ul> <!--#sub_nav-->
+                </li>
+                <li><a href="#">솜</a></li>
+                <li><a href="#">리빙</a>
+                    <ul class="sub_nav">
+                        <li><a href="#">커튼</a></li>
+                        <li><a href="#">쿠션</a></li>
+                        <li><a href="#">좌식쇼파</a></li>
+                        <li><a href="#">러그/발매트</a></li>
+                        <li><a href="#">실내화/앞치마</a></li>
+                    </ul> <!--#sub_nav-->
+                </li>
+                <li><a href="#">커뮤니티</a>
+                    <ul class="sub_nav">
+                        <li><a href="#">NOTICE</a></li>
+                        <li><a href="#">Q&A</a></li>
+                        <li><a href="#">REVIEW</a></li>
+                        <li><a href="#">웨딩 이벤트</a></li>
+                    </ul> <!--#sub_nav-->
+                </li>
+            </ul>
+        </nav> <!--#main_nav-->
+
+        <aside id="megamenu" class="web">
+            <ul>
+                <li><a href="#">SEASON</a>
+                    <ul class="sub">
+                        <li><a href="#">여름 이불</a></li>
+                        <li><a href="#">차렵 이불</a></li>
+                        <li><a href="#">극세사 이불</a></li>
+                    </ul> <!--#sub-->
+                </li> 
+                <li><a href="#">BEST</a></li>
+                <li><a href="#">SALE</a></li>
+                <li><a href="#">침구</a>
+                    <ul class="sub">
+                        <li><a href="#">호텔 침구</a></li>
+                        <li><a href="#">신혼 침구</a></li>
+                        <li><a href="#">디자인 침구</a></li>
+                        <li><a href="#">모달 침구</a></li>
+                        <li><a href="#">린넨 침구</a></li>
+                    </ul> <!--#sub-->
+                </li>
+                <li><a href="#">패드</a></li>
+                <li><a href="#">커버류</a>
+                    <ul class="sub">
+                        <li><a href="#">매트리스 커버</a></li>
+                        <li><a href="#">요 커버</a></li>
+                        <li><a href="#">베개 커버</a></li>
+                    </ul> <!--#sub-->
+                </li>
+                <li><a href="#">솜</a></li>
+                <li><a href="#">리빙</a>
+                    <ul class="sub">
+                        <li><a href="#">커튼</a></li>
+                        <li><a href="#">쿠션</a></li>
+                        <li><a href="#">좌식쇼파</a></li>
+                        <li><a href="#">러그/발매트</a></li>
+                        <li><a href="#">실내화/앞치마</a></li>
+                    </ul> <!--#sub-->
+                </li>
+                <li><a href="#">커뮤니티</a>
+                    <ul class="sub">
+                        <li><a href="#">NOTICE</a></li>
+                        <li><a href="#">Q&A</a></li>
+                        <li><a href="#">REVIEW</a></li>
+                        <li><a href="#">웨딩 이벤트</a></li>
+                    </ul> <!--#sub-->
+                </li>
+            </ul>
+        </aside> <!--#megamenu-->
+        
+        <div id="overlay" class="mobile">
+            <aside id="sidebar">
+                <button type="button" id="close" aria-label="사이드바 닫기"></button>
+                
+                <a href="#">
+                    <h2>로그인 해주세요.</h2>
+                    <p>회원가입하고 다양한 혜택 받으세요.</p>
+                </a>
+    
+                <form id="search_box" role="search" aria-label="제품 검색">
+                    <input id="q" name="q" type="text" placeholder="검색">
+                </form> <!--#search_box-->
+                
+                <div id="accordian">
+                    <section>
+                        <h3>SEASON</h3>
+                        <ul>
+                            <li><a href="#">여름 이불</a></li>
+                            <li><a href="#">차렵 이불</a></li>
+                            <li><a href="#">극세사 이불</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3><a href="">BEST</a></h3>
+                    </section>
+                    <section>
+                        <h3><a href="#">SALE</a></h3>
+                    </section>
+                    <section>
+                        <h3>침구</h3>
+                        <ul>
+                            <li><a href="#">호텔 침구</a></li>
+                            <li><a href="#">신혼 침구</a></li>
+                            <li><a href="#">디자인 침구</a></li>
+                            <li><a href="#">모달 침구</a></li>
+                            <li><a href="#">린넨 침구</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3><a href="#">패드</a></h3>
+                    </section>
+                    <section>
+                        <h3>커버류</h3>
+                        <ul>
+                            <li><a href="#">매트리스 커버</a></li>
+                            <li><a href="#">요 커버</a></li>
+                            <li><a href="#">베개 커버</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>솜</h3>
+                    </section>  
+                    <section>
+                        <h3>리빙</h3>
+                        <ul>
+                            <li><a href="#">커튼</a></li>
+                            <li><a href="#">쿠션</a></li>
+                            <li><a href="#">좌식쇼파</a></li>
+                            <li><a href="#">러그/발매트</a></li>
+                            <li><a href="#">실내화/앞치마</a></li>
+                        </ul>
+                    </section>              
+                </div> <!--#accordian-->
+    
+                <h3>커뮤니티</h3>
+                <ul>
+                    <li><a href="#">NOTICE</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">REVIEW</a></li>
+                    <li><a href="#">웨딩 이벤트</a></li>
+                </ul>
+            </aside> <!--#sidebar-->
+        </div> <!--#overlay-->
+
+        <main id="content">
+            <section id="banner" class="bleed">
+                <ul class="mobile">
+                    <li><img src="images/mobile_banner_1.png" alt="드라마 속 프리미엄 침구 jtbc 드라마 &lt;에스콰이어&gt; 협찬 제품 배너"></li>
+                    <li><img src="images/mobile_banner_2.png" alt="휴식이 머무는 집 MONOHOUSE 브랜드 배너"></li>
+                    <li><img src="images/mobile_banner_3.png" alt="MONOHOUSE SUMMER SELECTION 세가지 제품 홍보 배너"></li>
+                </ul>
+
+                <ul class="web">
+                    <li><img src="images/banner_1.png" alt="드라마 속 프리미엄 침구 jtbc 드라마 &lt;에스콰이어&gt; 협찬 제품 배너"></li>
+                    <li><img src="images/banner_2.png" alt="휴식이 머무는 집 MONOHOUSE 브랜드 배너"></li>
+                    <li><img src="images/banner_3.png" alt="MONOHOUSE SUMMER SELECTION 세가지 제품 홍보 배너"></li>
+                </ul>
+
+                <nav class="indicator indicator--banner" aria-label="메인 배너 내비게이션">
+                    <ul class="indicator__dots" role="list">
+                        <li><button type="button" aria-label="1번 슬라이드" aria-current="true" data-target="#heroCarousel" data-index="0"></button></li>
+                        <li><button type="button" aria-label="2번 슬라이드" data-target="#heroCarousel" data-index="1"></button></li>
+                        <li><button type="button" aria-label="3번 슬라이드" data-target="#heroCarousel" data-index="2"></button></li>
+                    </ul>
+                </nav>
+            </section> <!--#banner-->
+
+            <section id="guide">
+                <ul>
+                    <li><a href="#">첫 구매 <br>5,000원 할인</a></li>
+                    <li><a href="#">웨딩 고객<br>전용 혜택</a></li>
+                    <li><a href="#">최대 50% 할인</a></li>
+                    <li><a href="#">자주 묻는 질문</a></li>
+                </ul>
+            </section> <!--#guide-->
+
+            <section id="new">
+                <h2 class="title">NEW</h2>
+                <div id="newCarousel">
+                    <ul>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_1.png" alt="[알러지케어]100수 고밀도 스트라이프 호텔침구(크림화이트)"><img src="images/new_1_2.png" alt="[알러지케어]100수 고밀도 스트라이프 호텔침구(크림화이트) 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#알러지케어</li>
+                                    </ul>
+                                    <h3>[알러지케어]100수 고밀도 스프라이트 호텔침구(크림화이트)</h3>
+                                    <p>극강의 부드러운 100수, 심플하고 댄디한 스트라이프 패턴</p>
+                                    <div class="price_box" aria-label="할인가 129,600원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="162000">162,000원</data></s>
+                                        <strong class="price_sale"><data value="129600">129,600원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions" class="mobile">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_2.png" alt="버베나 침구"><img src="images/new_2_2.png" alt="버베나 침구 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#디자인침구</li>
+                                    </ul>
+                                    <h3>버베나 침구</h3>
+                                    <p>차분한 색감, 은은한 플라워패턴, 부드러운 촉감</p>
+                                    <div class="price_box" aria-label="할인가 124,000원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="155000">155,000원</data></s>
+                                        <strong class="price_sale"><data value="124000">124,000원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_3.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린)"><img src="images/new_3_2.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린) 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#알러지케어</li>
+                                        <li>#드라마협찬</li>
+                                    </ul>
+                                    <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린)</h3>
+                                    <p>[jtbc 에스콰이어 정채연 침구]극강의 부드러운 100수면, 분위기있는 올리브그린</p>
+                                    <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="160000">160,000원</data></s>
+                                        <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_4.png" alt="[알러지케어]60수 고밀도 베이지 호텔침구"><img src="images/new_4_2.png" alt="[알러지케어]60수 고밀도 베이지 호텔침구 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#알러지케어</li>
+                                        <li>#드라마협찬</li>
+                                    </ul>
+                                    <h3>[알러지케어]60수 고밀도 베이지 호텔침구</h3>
+                                    <p>[jtbc 에스콰이어 이진욱 침구]뽀송한 호텔침구, 내추럴하고 무난한 베이지 색상인기</p>
+                                    <div class="price_box" aria-label="할인가 109,600원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="137000">137,000원</data></s>
+                                        <strong class="price_sale"><data value="109600">109,600원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_5.png" alt="프리미엄 모달 핑크아이보리 호텔침구"><img src="images/new_5_2.png" alt="프리미엄 모달 핑크아이보리 호텔침구 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#모달</li>
+                                    </ul>
+                                    <h3>프리미엄 모달 핑크아이보리 호텔침구</h3>
+                                    <p>핑크+아이보리 조화로 화사해요</p>
+                                    <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="160000">160,000원</data></s>
+                                        <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                        <li>
+                            <a href="#" class="new_product_thumb"><img src="images/new_6.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(차콜)"><img src="images/new_6_2.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(차콜) 상세이미지" class="web"></a>
+                            <div class="new_product_info">
+                                <a href="#">
+                                    <ul class="flags">
+                                        <li>#알러지케어</li>
+                                    </ul>
+                                    <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(차콜)</h3>
+                                    <p>(신컬러)모던하고 시크한 차콜색</p>
+                                    <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                        <span class="price_rate">20%</span>
+                                        <s class="price_orig"><data value="160000">160,000원</data></s>
+                                        <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                    </div> <!--.price_box-->
+                                </a>
+                                <a href="#" class="web">더보기</a>
+                                <div class="product_actions">
+                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                                </div> <!--.product_actions-->
+                            </div> <!--.new_product_info-->
+                        </li>
+                    </ul>
+                </div> <!--#newCarousel-->
+
+                <nav class="indicator indicator--dots" aria-label="NEW 섹션 페이지">
+                    <ul class="indicator__dots" role="list">
+                        <li><button type="button" aria-label="1페이지" aria-current="true" data-target="#newCarousel" data-index="0"></button></li>
+                        <li><button type="button" aria-label="2페이지" data-target="#newCarousel" data-index="1"></button></li>
+                        <li><button type="button" aria-label="3페이지" data-target="#newCarousel" data-index="2"></button></li>
+                    </ul>
+                </nav>
+
+                <div id="new_control" class="web">
+                    <button type="button" id="new-prev" aria-label="이전 상품"></button>
+                    <button type="button" id="new-next" aria-label="다음 상품"></button>
+                </div>
+            </section> <!--#new-->
+
+            <section id="best">
+                <h2 class="title">BEST</h2>
+                <p>지금 가장 사랑 받는 베스트 상품</p>
+                <ul>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_1.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(크림화이트)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(크림화이트)</h3>
+                                <div class="price_box" aria-label="할인가 109,600원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="137000">137,000원</data></s>
+                                    <strong class="price_sale"><data value="109600">109,600원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[판매1위] 이음선없음, 극강의 부드러운 100수 고밀도의 촉감을 느껴보세요</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_2.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)</h3>
+                                <div class="price_box" aria-label="할인가 109,600원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="137000">137,000원</data></s>
+                                    <strong class="price_sale"><data value="109600">109,600원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문폭주] 극강의 부드러운 100수 고밀도! 이음선없는 광폭원단사용</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_3.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(그레이)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(그레이)</h3>
+                                <div class="price_box" aria-label="할인가 109,600원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="137000">137,000원</data></s>
+                                    <strong class="price_sale"><data value="109600">109,600원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문폭주] 보드랍고 먼지없는 100수 고밀도 호텔침구</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_4.png" alt="[알러지케어]시그니처 100수 크림화이트 차렵침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 크림화이트 차렵침구</h3>
+                                <div class="price_box" aria-label="할인가 159,200원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="199000">199,000원</data></s>
+                                    <strong class="price_sale"><data value="159200">159,200원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문폭주](누빔자국없음) 인기상품 100수 고밀도 원단의 차렵이불 출시</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_5.png" alt="[알러지케어]시그니처 100수 밀크베이지 차렵침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 밀크베이지 차렵침구</h3>
+                                <div class="price_box" aria-label="할인가 159,200원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="199000">199,000원</data></s>
+                                    <strong class="price_sale"><data value="159200">159,200원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문상승]솜과 일체형, 극강의 부드러운 100수 면</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_6.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(크림아이보리)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(크림아이보리)</h3>
+                                <div class="price_box" aria-label="할인가 109,600원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="137000">137,000원</data></s>
+                                    <strong class="price_sale"><data value="109600">109,600원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문상승](신컬러) 최고의 부드러운 100수, 소프트한 크림치즈 컬러</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_7.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린)</h3>
+                                <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="160000">160,000원</data></s>
+                                    <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문폭주](신상) 딥그린 컬러 100수라 엄청 부드러워요</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_8.png" alt="스틸 모달 화이트 차렵이불(Q/K.LK.EK)"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>스틸 모달 화이트 차렵이불(Q/K.LK.EK)</h3>
+                                <div class="price_box" aria-label="할인가 119,000원 (30% 할인)">
+                                    <span class="price_rate">30%</span>
+                                    <s class="price_orig"><data value="170000">170,000원</data></s>
+                                    <strong class="price_sale"><data value="119000">119,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>2024 S/S신상, 부드러운 모달소재</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_9.png" alt="[알러지케어]리본 고밀도 호텔 차렵침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]리본 고밀도 호텔 차렵침구</h3>
+                                <div class="price_box" aria-label="할인가 168,000원 (30% 할인)">
+                                    <span class="price_rate">30%</span>
+                                    <s class="price_orig"><data value="210000">210,000원</data></s>
+                                    <strong class="price_sale"><data value="168000">168,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>2024 S/S신상, 부드러운 모달소재</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_10.png" alt="프리미엄 모달 화이트 호텔침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>프리미엄 모달 화이트 호텔침구</h3>
+                                <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="160000">160,000원</data></s>
+                                    <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>모달이 대세, 실크같은 촉감이 너무 부드러워요. 기본 화이트 인기</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_11.png" alt="프리미엄 모달 아이보리 침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>프리미엄 모달 아이보리 침구</h3>
+                                <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="160000">160,000원</data></s>
+                                    <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>[주문폭주]럭셔리한 골드빛 아이보리, 광택이 고급스러워요</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_12.png" alt="프리미엄 모달 베이지 호텔침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>프리미엄 모달 베이지 호텔침구</h3>
+                                <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="160000">160,000원</data></s>
+                                    <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>실크촉감, 신상컬러 고급스러운 골드베이지</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_13.png" alt="프리미엄 모달 핑크그레이 침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>프리미엄 모달 핑크그레이 침구</h3>
+                                <div class="price_box" aria-label="할인가 128,000원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="160000">160,000원</data></s>
+                                    <strong class="price_sale"><data value="128000">128,000원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>자연친화적인 모달소재로 실크같은 촉감이 너무나 부드러워요. 핑크그레이 주문폭주</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_14.png" alt="[알러지케어]60수 고밀도 크림화이트 호텔침구"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[알러지케어]60수 고밀도 크림화이트 호텔침구</h3>
+                                <div class="price_box" aria-label="할인가 99,200원 (20% 할인)">
+                                    <span class="price_rate">20%</span>
+                                    <s class="price_orig"><data value="124000">124,000원</data></s>
+                                    <strong class="price_sale"><data value="99200">99,200원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>이음선없는 광폭원단, 기분좋은 사각거림과 부드러운 촉감의 호텔침구, 깨끗한 기본 화이트색상 인기</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_15.png" alt="[모달100%]마시멜로우 크림화이트 차렵이불[SS/Q/K/LK]"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[모달100%]마시멜로우 크림화이트 차렵이불[SS/Q/K/LK]</h3>
+                                <div class="price_box" aria-label="할인가 108,500원 (30% 할인)">
+                                    <span class="price_rate">30%</span>
+                                    <s class="price_orig"><data value="155000">155,000원</data></s>
+                                    <strong class="price_sale"><data value="108500">108,500원</data></strong>
+                                </div> <!--.price_box-->
+                                <p></p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                    <li>
+                        <div class="best_product_img">
+                            <a href="#" class="best_product_thumb"><img src="images/best_16.png" alt="[모달100%]마시멜로우 블루그레이 차렵이불[SS/Q/K/LK]"></a>
+                            <div class="product_actions_hover">
+                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
+                            </div> <!--.product_actions_hover-->
+                        </div> <!--.best_product_img-->
+                        <div class="best_product_info">
+                            <a href="#">
+                                <h3>[모달100%]마시멜로우 블루그레이 차렵이불[SS/Q/K/LK]</h3>
+                                <div class="price_box" aria-label="할인가 108,500원 (30% 할인)">
+                                    <span class="price_rate">30%</span>
+                                    <s class="price_orig"><data value="155000">155,000원</data></s>
+                                    <strong class="price_sale"><data value="108500">108,500원</data></strong>
+                                </div> <!--.price_box-->
+                                <p>모달 100% 바이오워싱 제품으로 부드러움이 일품이예요</p>
+                            </a>
+                        </div> <!--.best_product_info-->
+                    </li>
+                </ul>
+                
+                <div id="more-wrap">
+                    <button type="button" id="more" aria-label="항목 더보기" aria-expanded="false">더보기</button>
+                </div>
+            </section> <!--#best-->
+
+            <section id="mini_banner" class="bleed">
+                <img src="images/mini_banner.png" alt="&quot;Everyday, a softer chapter&quot; 편안한 순간의 쌓여 집이 된다 미니 배너" class="mobile">
+                <div class="web">
+                    <div id="mini_overlay" aria-label="mini_banner_overlay"></div>
+
+                    <span>monohouse</span>
+                    <h2>Everyday, a softer chapter</h2>
+                    <p>편안한 순간이 쌓여 집이 된다</p>
+                </div>
+            </section> <!--#mini_banner-->
+
+            <section id="review">
+                <h2 class="title">PHOTO REVIEW</h2>
+                <a href="#" class="web">더보기</a>
+                <div>
+                    <ul>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_1.png" alt="사용자 후기 이미지: [알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">이불 촉감이 정말 부르럽고 가볍네요. 덥었을때 답답하지도 않고 포근해서 숙면을 취했어요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-12" itemprop="datePublished">2025.01.12</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_1.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)">
+                                            <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_2.png" alt="허브그린 침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">이불 촉감이 정말 부르럽고 가볍네요. 덥었을때 답답하지도 않고 포근해서 숙면을 취했어요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">공식몰 작성</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_2.png" alt="허브그린 침구">
+                                            <h3>허브그린 침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_3.png" alt="텐셀 린넨 침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">린넨이라 까슬할 줄 알았는데 텐셀 섞여서 부드러워요. 여름용으로 완전 추천!</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2024-08-11" itemprop="datePublished">2024.08.11</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_3.png" alt="텐셀 린넨 침구">
+                                            <h3>텐셀 린넨 침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_4.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린) 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">컬러감이 진짜 고급스러워요. 방 분위기가 완전 바뀌었어요!</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2024-01-20" itemprop="datePublished">2024.01.20</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_4.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린)">
+                                            <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린)</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_5.png" alt="[알러지케어]시그니처 100수 밀크베이지 차렵침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">솜이랑 커버가 일체형이라 정리하기도 편하고 포근해요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-02-23" itemprop="datePublished">2025.02.23</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_5.png" alt="[알러지케어]시그니처 100수 밀크베이지 차렵침구">
+                                            <h3>[알러지케어]시그니처 100수 밀크베이지 차렵침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_6.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린) 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">촉감이 부드럽고 밀도감이 좋아요. 방 분위기를 바꿔줘서 기분이 좋아요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">공식몰 작성</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_6.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린)">
+                                            <h3>[알러지케어]시그니처 100수 고밀도 호텔침구(올리브그린)</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_7.png" alt="[알러지케어]고밀도 리프자수 그레이 호텔 차렵이불[SS/Q/K.LK/EK] 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">자수 포인트가 진짜 예뻐요. 생각보다 훨씬 퀄리티 좋아요</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_7.png" alt="[알러지케어]고밀도 리프자수 그레이 호텔 차렵이불[SS/Q/K.LK/EK]">
+                                            <h3>[알러지케어]고밀도 리프자수 그레이 호텔 차렵이불[SS/Q/K.LK/EK]</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_8.png" alt="[모달100%]마리 모달 화이트 차렵이불[SS/Q.K] 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">모달이라 그런지 촉감이 정말 좋아요. 세탁해도 변형 없어요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_8.png" alt="[모달100%]마리 모달 화이트 차렵이불[SS/Q.K]">
+                                            <h3>[모달100%]마리 모달 화이트 차렵이불[SS/Q.K]</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_9.png" alt="[알러지케어]시그니처 100수 크림화이트 차렵침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">순백톤이라 방이 더 넓고 깨끗해 보여요. 부드럽고 포근해요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_9.png" alt="[알러지케어]시그니처 100수 크림화이트 차렵침구">
+                                            <h3>[알러지케어]시그니처 100수 크림화이트 차렵침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_10.png" alt="[알러지케어]60수 고밀도 베이지 호텔침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">베이지톤이 따뜻해서 겨울에도 좋아요. 이불 촉감이 정말 부르럽고 가볍고 포근해서 숙면을 취했어요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">공식몰 작성</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_10.png" alt="[알러지케어]60수 고밀도 베이지 호텔침구">
+                                            <h3>[알러지케어]60수 고밀도 베이지 호텔침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_11.png" alt="리미티드 워싱 터키블루 린넨침구 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">색감이 너무 예뻐요. 워싱감 있어서 자연스러워요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_11.png" alt="리미티드 워싱 터키블루 린넨침구">
+                                            <h3>리미티드 워싱 터키블루 린넨침구</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_12.png" alt="모노 아이보리 극세사이불[SS/Q/K.LK/EK] 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">촉감이 너무 부드럽고 따뜻해요. 겨울 내내 잘 덮었어요!</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">네******</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_12.png" alt="모노 아이보리 극세사이불[SS/Q/K.LK/EK]">
+                                            <h3>모노 아이보리 극세사이불[SS/Q/K.LK/EK]</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                        <li>
+                            <article itemscope itemtype="https://schema.org/Review">
+                                <a href="#" class="review_thumb"><img src="images/m_review_13.png" alt="푸딩모달 차렵이불(베이지)[SS/Q/K] 후기 사진"></a>
+                                <div class="review_info">
+                                    <span class="review_rating" aria-label="만족">만족</span>
+                                    <blockquote class="review_text">이름처럼 정말 부드러워요. 포근하고 가벼워서 매일 덮게 돼요.</blockquote>
+                                    <div class="review_meta">
+                                        <span itemprop="author">공식몰 작성</span>
+                                        <time datetime="2025-01-18" itemprop="datePublished">2025.01.18</time>
+                                    </div> <!--.review_meta-->
+                                    <div class="review_product">
+                                        <a href="#">
+                                            <img src="images/review_product_13.png" alt="푸딩모달 차렵이불(베이지)[SS/Q/K]">
+                                            <h3>푸딩모달 차렵이불(베이지)[ SS/Q/K]</h3>
+                                        </a>
+                                    </div> <!--.review_product-->
+                                </div> <!--.review_info-->
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+
+                <nav class="indicator indicator--dots" aria-label="REVIEW 섹션 페이지">
+                    <ul class="indicator__dots" role="list">
+                        <li><button type="button" aria-label="1페이지" aria-current="true" data-target="#reviewCarousel" data-index="0"></button></li>
+                        <li><button type="button" aria-label="2페이지" data-target="#reviewCarousel" data-index="1"></button></li>
+                        <li><button type="button" aria-label="3페이지" data-target="#reviewCarousel" data-index="2"></button></li>
+                        <li><button type="button" aria-label="4페이지" data-target="#reviewCarousel" data-index="3"></button></li>
+                        <li><button type="button" aria-label="5페이지" data-target="#reviewCarousel" data-index="4"></button></li>
+                        <li><button type="button" aria-label="6페이지" data-target="#reviewCarousel" data-index="5"></button></li>
+                        <li><button type="button" aria-label="7페이지" data-target="#reviewCarousel" data-index="6"></button></li>
+                    </ul>
+                </nav>
+            </section> <!--#review-->
+        </main> <!--#content-->
+
+        <footer id="footer">
+            <div id="footer_info">
+                <ul>
+                    <li class="web">
+                        <h3>[ ABOUT US ]</h3>
+                        <ul>
+                            <li>Company: 모노하우스</li>
+                            <li>Ceo: 김희영Personal info manager 김희영</li>
+                            <li>tel: 032-503-7949E-mail: gmldud29@naver.com</li>
+                            <li>Company Reg.No: 125-22-02051[사업자정보확인]</li>
+                            <li>Network Reg.No: 제 2016-인천부평-0081 호</li>
+                            <li>Address: 21388 인천광역시 부평구 부평문화로 47 (부평동) 302호</li>
+                        </ul>
+                        <p>모든이미지는 모노하우스의 소유로 법적인 보호를 받고 있습니다. 무단게재 및 도용시 저작권법에 의해 형사고발 및 손해배상을 묻습니다.</p>
+                        <p>Copyright © 모노하우스. All rights reserved. Designed by Showdesign</p>
+                    </li>
+                    <li>
+                        <h3>[ CUSTOMER CENTER ]</h3>
+                        <ul>
+                            <li>032-503-7949</li>
+                            <li>OPEN AM 10:00 - PM 05:00</li>
+                            <li>Sat, Sun, holiday closed</li>
+                            <li>상담문의는 항상 가능</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>[ BANK INFO ]</h3>
+                        <ul>
+                            <li>우리 1005802202097</li>
+                            <li>예금주 : 김희영(모노하우스)</li>
+                            <li>"주문자와 입금자명이 다를 경우 입금확인이 지연될 수 있습니다."</li>
+                        </ul>
+                    </li>
+                    <li class="web">
+                        <h3>[ EXCHANGE & RETURN ]</h3>
+                        <ul>
+                            <li>[교환/반품 주소지]</li>
+                            <li>인천광역시 부평구 부평문화로 47 (부평동) 3층 302호</li>
+                            <li>* 공지사항 및 이용안내를 참고하여 지정택배사로 반품요청해주세요.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div> <!--#footer_info-->
+            
+            <ul>
+                <li class="mobile"><a href="#">회사소개</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li class="web"><a href="#">고객센터</a></li>
+                <li><a href="#">교환/반품</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+            </ul>
+
+            <p>"당신의 일상에 따뜻함이 머무르길 바랍니다."</p>
+            <p>MONOHOUSE &copy; All rights reserved.</p>
+        </footer> <!--#footer-->
+
+    </div> <!--#container-->
+    
+    <!-- 플로팅 액션 버튼-->
+    <button id="backToTop" aria-label="상단으로 이동"></button>
+    <button id="kakao" aria-label="카카오톡 상담하기">카카오톡 상담하기</button>
+
 </body>
-</html>
