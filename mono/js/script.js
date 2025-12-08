@@ -181,8 +181,9 @@ $(function () {
   const $track     = $('#banner > ul.web');   
   const $dots      = $('#banner .indicator__dots button'); 
   const COUNT      = $track.children('li').length;
+  const UNIT = 100 / COUNT;
 
-  const INTERVAL   = 5000;
+  const INTERVAL   = 7000;
   let current = 0;
   let timer   = null;
 
@@ -193,7 +194,9 @@ $(function () {
 
   function goTo(index){
     current = (index + COUNT) % COUNT;
-    $track.css('margin-left', (-100 * current) + '%');
+    const offset = -UNIT * current; // 슬라이드 0, -100, -200 ...
+
+    $track.css('transform', 'translateX(' + offset + '%)');
     updateDots();
   }
 
