@@ -538,20 +538,18 @@ $(function () {
 
 // best 더보기
 document.addEventListener("DOMContentLoaded", function () {
-    const bestSection = document.getElementById("best");
-    const moreBtn = document.getElementById("more");
+  const bestSection = document.getElementById("best");
+  const moreBtn = document.getElementById("more");
 
-    moreBtn.addEventListener("click", function () {
-        const isExpanded = bestSection.classList.toggle("expanded");
-
-        moreBtn.setAttribute("aria-expanded", isExpanded);
-
-        if (isExpanded) {
-            moreBtn.textContent = "접기";
-        } else {
-            moreBtn.textContent = "더보기";
-        }
-    });
+  moreBtn.addEventListener("click", function () {
+      const isExpanded = bestSection.classList.toggle("expanded");
+      moreBtn.setAttribute("aria-expanded", isExpanded);
+      if (isExpanded) {
+          moreBtn.textContent = "접기";
+      } else {
+          moreBtn.textContent = "더보기";
+      }
+  });
 });
 
 
@@ -657,6 +655,157 @@ $(function () {
   goTo(0, false);
   startAutoplay();
 });
+*/
+
+$(function () {
+  const $viewport = $('#review > div');
+  const $track    = $viewport.children('ul');
+  const $items    = $track.children('li');
+  
+  let PER_PAGE = 2; // 기본 모바일 기준
+  let pageCount = 0;
+  let current = 0;
+  let AUTOPLAY_MS = 4000;
+  let autoplayTimer = null;
+  
+  // 환경에 따라 PER_PAGE 계산
+  function getPerPage() {
+    return window.matchMedia('(min-width: 1024px)').matches ? 1 : 2;
+  }
+  
+  // 인디케이터 생성
+  function createDots() {
+    const $container = $('#review .indicator__dots');
+    $container.empty();
+    
+    for (let i = 0; i < pageCount; i++) {
+      const btn = $('<button type="button"></button>')
+      .attr('data-index', i)
+      .attr('aria-label', `${i + 1} 페이지`);
+      
+      if (i === 0) btn.attr('aria-current', 'true');
+      
+      $container.append($('<li></li>').append(btn));
+    }
+    
+    // 이벤트 연결
+    $('#review .indicator__dots button').on('click', function () {
+      const idx = parseInt($(this).data('index'), 10);
+      goTo(idx);
+      restartAutoplay();
+    });
+  }
+  
+  // 페이지 개수 계산
+  function updatePageCount() {
+    PER_PAGE = getPerPage();
+    pageCount = Math.ceil($items.length / PER_PAGE);
+  }
+  
+  // 이동 함수
+  function goTo(page, animate = true) {
+    current = Math.max(0, Math.min(page, pageCount - 1));
+    
+    // 현재 보여줘야 하는 카드 인덱스
+    const targetIndex = current * PER_PAGE;
+    const targetEl = $items.get(targetIndex);
+    
+    const x = targetEl ? targetEl.offsetLeft : 0;
+    
+    if (!animate) $track.css('transition', 'none');
+    $track.css('transform', `translate3d(${-x}px,0,0)`);
+    if (!animate) { $track[0].offsetHeight; $track.css('transition', ''); }
+    
+    // 인디케이터 갱신
+    const $dots = $('#review .indicator__dots button');
+    $dots.attr('aria-current', null);
+    $dots.eq(current).attr('aria-current', 'true');
+  }
+  
+  // 스와이프
+  let isDown = false, startX = 0, deltaX = 0;
+  $viewport.css('touch-action', 'pan-y');
+  
+  $viewport.on('pointerdown', function (e) {
+    isDown = true;
+    startX = e.clientX;
+    deltaX = 0;
+    
+    this.setPointerCapture(e.pointerId);
+    $track.css('transition', 'none');
+    stopAutoplay();
+  });
+  
+  $viewport.on('pointermove', function (e) {
+    if (!isDown) return;
+    deltaX = e.clientX - startX;
+    
+    const base = -getOffsetByIndex(current * PER_PAGE);
+    $track.css('transform', `translate3d(${base + deltaX}px,0,0)`);
+  });
+  
+  function getOffsetByIndex(i) {
+    const el = $items.get(i);
+    return el ? el.offsetLeft : 0;
+  }
+  
+  function endSwipe() {
+    if (!isDown) return;
+    isDown = false;
+    
+    $track.css('transition', 'transform .45s cubic-bezier(0.25, 0.1, 0.25, 1)');
+    
+    const threshold = $viewport[0].getBoundingClientRect().width * 0.15;
+    
+    if (deltaX < -threshold) goTo(current + 1);
+    else if (deltaX > threshold) goTo(current - 1);
+    else goTo(current);
+    
+    restartAutoplay();
+  }
+  
+  $viewport.on('pointerup pointercancel pointerleave', endSwipe);
+  
+  // 오토플레이
+  function startAutoplay() {
+    if (autoplayTimer) return;
+    autoplayTimer = setInterval(() => {
+      goTo((current + 1) % pageCount);
+    }, AUTOPLAY_MS);
+  }
+  
+  function stopAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+  
+  function restartAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+  
+  // 리사이즈 & 초기화
+  function rebuild() {
+    // 현재 페이지 환경 계산
+    updatePageCount();
+    
+    // 인디케이터 재생성
+    createDots();
+    
+    // 현재 위치 보정
+    goTo(0, false);
+  }
+  
+  $(window).on('resize', rebuild);
+  
+  // 폰트 로딩 뒤 위치 보정
+  if (document.fonts) document.fonts.ready.then(rebuild);
+  
+  // 초기 실행
+  rebuild();
+  startAutoplay();
+});
+
 
 
 // backToTop
@@ -677,4 +826,4 @@ $(document).ready(function() {
         $('html, body').animate({ scrollTop: 0 }, 400);  // 400ms = 0.4초
     });
 });
-*/
+

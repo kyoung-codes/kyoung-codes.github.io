@@ -1703,6 +1703,7 @@ a {
     #review {
         position: relative;
         margin-bottom: 230px;
+        overflow: hidden;
     }
 
     #review > h2 {
@@ -1724,32 +1725,30 @@ a {
     }
 
     #review > div {
+        margin-bottom: 60px;
+    }
+
+    #review > div > ul {
         display: flex;
         gap: 20px;
     }
 
-    #review > div > article.web {
-        width: 470px;
-        box-sizing: border-box;
-        position: relative;
-    }
-
-    #review > div > ul {
-        display: grid;
-        
-        gap: 20px;
-    }
-
     #review > div > ul > li {
-        display: block;
-        height: 353px;
+        width: 300px;
+        height: 400px;
+        box-sizing: border-box;
 
         position: relative;
+    }
+
+    #review > div > ul > li > article,
+    .review_thumb {
+        height: 400px;
+        box-sizing: border-box;
     }
 
     .review_thumb > img {
-        width: 100%;
-        height: auto;
+        width: 300px;
         object-fit: cover;
     }
 
@@ -1819,6 +1818,26 @@ a {
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .indicator--dots .indicator__dots {
+        display: flex;
+        gap: 0;
+        width: 960px;
+        margin: 2rem auto 0;
+    }
+
+    .indicator--dots .indicator__dots button {
+        flex: 1;
+        width: 60px;
+        height: 4px;
+        border-radius: 0;
+        background-color: rgba(211, 202, 191, 0.7);
+        padding: 0;
+    }
+
+    .indicator--dots .indicator__dots button[aria-current="true"] {
+        background-color: #9E8F7D;
     }
 
     /* footer 영역 */
