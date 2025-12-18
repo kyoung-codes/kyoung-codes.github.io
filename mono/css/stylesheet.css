@@ -977,6 +977,18 @@ a {
         background: url("../images/icon_account.svg") no-repeat center center /24px;
     }
 
+    #header > div > button:nth-child(1):hover {
+        background: url("../images/icon_like_hover.svg") no-repeat center center /24px;
+    }
+
+    #header > div > button:nth-child(2):hover {
+        background: url("../images/icon_cart_hover.svg") no-repeat center center /24px;
+    }
+
+    #header > div > button:nth-child(3):hover {
+        background: url("../images/icon_account_hover.svg") no-repeat center center /24px;
+    }
+
 
     /* nav 영역 */
     #nav {
@@ -1002,6 +1014,18 @@ a {
         background-color: #fff;
         font-size: 18px;
         font-weight: 500;
+    }
+
+    #category:hover {
+        color: #9E8F7D;
+    }
+
+    #category:hover::before{
+        background: url("../images/icon_category_hover.svg") no-repeat center /24px;;
+    }
+
+    #category:hover::after{
+        background: url("../images/icon_arrow_hover.svg") no-repeat center /24px;;
     }
 
     #category::before {
@@ -1313,6 +1337,22 @@ a {
     }
 
 
+    /* 공통 hover */
+
+    .hover-zoom {
+        overflow: hidden;
+    }
+    
+    .hover-zoom img {
+        transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    
+    .hover-zoom:hover img {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+    }
+
+
     /* new 영역 */
     .title {
         font-size: 32px;
@@ -1438,7 +1478,26 @@ a {
         color: #b74141;
     }
 
-    .new_product_thumb {position: relative;}
+    .new_product_thumb {
+        position: relative;
+    }
+
+    #new .hover-zoom {
+        overflow: visible;
+    }
+
+    #new .hover-zoom img:first-of-type {
+        transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    
+    .hover-zoom:hover img:first-of-type {
+        transform: scale(1.05);
+        filter: brightness(1.05);
+    }
+
+    #new .hover-zoom img:not(:first-of-type) {
+        transform: none;
+    }
 
     .new_product_thumb > img:nth-child(1) {
         width: 414px;
@@ -1840,6 +1899,26 @@ a {
         background-color: #9E8F7D;
     }
 
+    #review_control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #review_control > button {
+        width: 48px;
+        height: 48px;
+        border: none;
+    }
+
+    #review_prev {
+        background: url("../images/review_prev.png") no-repeat center;
+    }
+
+    #review_prev {
+        background: url("../images/review_next.png") no-repeat center;
+    }
+
     /* footer 영역 */
     #footer {
         padding-top: 40px;
@@ -1944,6 +2023,13 @@ a {
         visibility: visible;
     }
 
+    #backToTop:hover {
+        background-color: rgba(211, 202, 191, 0.4);
+        background-image: url("../images/icon_fab_hover.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
     #kakao {
         width: 4.625rem;
         height: 4.625rem;
@@ -1960,6 +2046,10 @@ a {
         position: fixed;
         bottom: 20px;
         right: 16px;
+    }
+
+    #kakao:hover {
+        background-color: #f1ca5d;
     }
 
 
