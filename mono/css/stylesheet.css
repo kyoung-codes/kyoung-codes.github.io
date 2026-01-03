@@ -1903,19 +1903,29 @@ a {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        z-index: 2;
     }
 
-    #review_control > button {
+    #review_control > button:nth-child(1),
+    #review_control > button:nth-child(2) {
         width: 48px;
         height: 48px;
         border: none;
+        border-radius: 24px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+        background-color: rgba(246, 246, 246, 0.6);
     }
 
-    #review_prev {
+    #review_control > button:nth-child(1):hover,
+    #review_control > button:nth-child(2):hover {
+        background-color: rgba(246, 246, 246, 0.9);
+    }
+
+    #review_control > button:nth-child(1) {
         background: url("../images/review_prev.png") no-repeat center;
     }
 
-    #review_prev {
+    #review_control > button:nth-child(2) {
         background: url("../images/review_next.png") no-repeat center;
     }
 
