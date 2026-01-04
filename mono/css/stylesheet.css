@@ -1899,13 +1899,6 @@ a {
         background-color: #9E8F7D;
     }
 
-    #review_control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-    }
-
     #review_control > button:nth-child(1),
     #review_control > button:nth-child(2) {
         width: 48px;
@@ -1922,10 +1915,21 @@ a {
     }
 
     #review_control > button:nth-child(1) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        z-index: 2;
+
         background: url("../images/review_prev.png") no-repeat center;
     }
 
     #review_control > button:nth-child(2) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 2;
         background: url("../images/review_next.png") no-repeat center;
     }
 
