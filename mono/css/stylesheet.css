@@ -2025,7 +2025,8 @@ a {
 
         position: fixed;
         bottom: 110px;
-        right: 29px;
+        right: 5.7%;
+        z-index: 3;
 
         opacity: 0;
         visibility: hidden;
@@ -2059,7 +2060,8 @@ a {
 
         position: fixed;
         bottom: 20px;
-        right: 16px;
+        right: 5%;
+        z-index: 3;
     }
 
     #kakao:hover {

@@ -661,6 +661,8 @@ $(function () {
   const $viewport = $('#review > div');
   const $track    = $viewport.children('ul');
   const $items    = $track.children('li');
+  const $prev = $('#review-prev');
+  const $next = $('#review-next');
   
   let PER_PAGE = 2; // 기본 모바일 기준
   let pageCount = 0;
@@ -695,6 +697,21 @@ $(function () {
       restartAutoplay();
     });
   }
+
+  // prev/next 버튼
+  $prev.on('click', function () {
+    // 마지막 페이지로 루프
+    const nextPage = (current - 1 + pageCount) % pageCount;
+    goTo(nextPage);
+    restartAutoplay();
+  });
+
+  $next.on('click', function () {
+    // 첫 페이지로 루프
+    const nextPage = (current + 1) % pageCount;
+    goTo(nextPage);
+   restartAutoplay();
+  });
   
   // 페이지 개수 계산
   function updatePageCount() {
@@ -726,12 +743,11 @@ $(function () {
   let isDown = false, startX = 0, deltaX = 0;
   $viewport.css('touch-action', 'pan-y');
   
-  $viewport.on('pointerdown', function (e) {
+    $viewport.on('pointerdown', function (e) {
     isDown = true;
     startX = e.clientX;
     deltaX = 0;
-    
-    this.setPointerCapture(e.pointerId);
+
     $track.css('transition', 'none');
     stopAutoplay();
   });
@@ -786,14 +802,10 @@ $(function () {
   
   // 리사이즈 & 초기화
   function rebuild() {
-    // 현재 페이지 환경 계산
+    const prevCurrent = current;  // 현재 페이지 저장
     updatePageCount();
-    
-    // 인디케이터 재생성
     createDots();
-    
-    // 현재 위치 보정
-    goTo(0, false);
+    goTo(Math.min(prevCurrent, pageCount - 1), false); // 가능한 범위로 보정
   }
   
   $(window).on('resize', rebuild);
