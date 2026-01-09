@@ -17,18 +17,18 @@
             <h1><a href="#"><img src="images/logo.png" alt="모노하우스 로고"></a></h1>
 
             <form id="search" class="web" role="search" aria-label="제품 검색">
-                    <input id="q" name="q" type="text" placeholder="검색">
+                    <input id="q_web" name="q" type="text" placeholder="검색">
             </form> <!--#search_box-->
 
             <div>
-                <button type="button" id="wish" class="web" aria-controls="wish" aria-label="찜 열기"></button>
-                <button type="button" id="shopping_cart" aria-controls="shopping_cart" aria-label="장바구니 열기"></button>
-                <button type="button" id="mypage" class="web" aria-controls="mypage" aria-label="마이페이지"></button>
+                <button type="button" id="wish" class="web"  aria-label="찜 열기"></button>
+                <button type="button" id="shopping_cart" aria-label="장바구니 열기"></button>
+                <button type="button" id="mypage" class="web" aria-label="마이페이지"></button>
             </div>
         </header> <!--#header-->
 
         <nav id="nav" class="web">
-            <button type="button" id="category" aria-controls="category" aria-label="카테고리 버튼" aria-expanded="false">카테고리</button>
+            <button type="button" id="category" aria-controls="megamenu" aria-label="카테고리 버튼" aria-expanded="false">카테고리</button>
 
             <ul id="main_nav">
                 <li><a href="#">SEASON</a>
@@ -137,7 +137,7 @@
                 </a>
     
                 <form id="search_box" role="search" aria-label="제품 검색">
-                    <input id="q" name="q" type="text" placeholder="검색">
+                    <input id="q_mobile" name="q" type="text" placeholder="검색">
                 </form> <!--#search_box-->
                 
                 <div id="accordian">
@@ -217,9 +217,9 @@
 
                 <nav class="indicator indicator--banner" aria-label="메인 배너 내비게이션">
                     <ul class="indicator__dots" role="list">
-                        <li><button type="button" aria-label="1번 슬라이드" aria-current="true" data-target="#heroCarousel" data-index="0"></button></li>
-                        <li><button type="button" aria-label="2번 슬라이드" data-target="#heroCarousel" data-index="1"></button></li>
-                        <li><button type="button" aria-label="3번 슬라이드" data-target="#heroCarousel" data-index="2"></button></li>
+                        <li><button type="button" aria-label="1번 슬라이드" aria-current="true" data-target="#banner" data-index="0"></button></li>
+                        <li><button type="button" aria-label="2번 슬라이드" data-target="#banner" data-index="1"></button></li>
+                        <li><button type="button" aria-label="3번 슬라이드" data-target="#banner" data-index="2"></button></li>
                     </ul>
                 </nav>
             </section> <!--#banner-->
@@ -253,7 +253,7 @@
                                     </div> <!--.price_box-->
                                 </a>
                                 <a href="#" class="web">더보기</a>
-                                <div class="product_actions" class="mobile">
+                                <div class="product_actions mobile">
                                     <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
@@ -968,13 +968,13 @@
 
                 <nav class="indicator indicator--dots" aria-label="REVIEW 섹션 페이지">
                     <ul class="indicator__dots" role="list">
-                        <li><button type="button" aria-label="1페이지" aria-current="true" data-target="#reviewCarousel" data-index="0"></button></li>
-                        <li><button type="button" aria-label="2페이지" data-target="#reviewCarousel" data-index="1"></button></li>
-                        <li><button type="button" aria-label="3페이지" data-target="#reviewCarousel" data-index="2"></button></li>
-                        <li><button type="button" aria-label="4페이지" data-target="#reviewCarousel" data-index="3"></button></li>
-                        <li><button type="button" aria-label="5페이지" data-target="#reviewCarousel" data-index="4"></button></li>
-                        <li><button type="button" aria-label="6페이지" data-target="#reviewCarousel" data-index="5"></button></li>
-                        <li><button type="button" aria-label="7페이지" data-target="#reviewCarousel" data-index="6"></button></li>
+                        <li><button type="button" aria-label="1페이지" aria-current="true" data-target="#review" data-index="0"></button></li>
+                        <li><button type="button" aria-label="2페이지" data-target="#review" data-index="1"></button></li>
+                        <li><button type="button" aria-label="3페이지" data-target="#review" data-index="2"></button></li>
+                        <li><button type="button" aria-label="4페이지" data-target="#review" data-index="3"></button></li>
+                        <li><button type="button" aria-label="5페이지" data-target="#review" data-index="4"></button></li>
+                        <li><button type="button" aria-label="6페이지" data-target="#review" data-index="5"></button></li>
+                        <li><button type="button" aria-label="7페이지" data-target="#review" data-index="6"></button></li>
                     </ul>
                 </nav>
 

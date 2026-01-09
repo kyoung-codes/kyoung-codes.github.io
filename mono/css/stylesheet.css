@@ -1948,9 +1948,13 @@ a {
     }
 
     #footer_info > ul > li {
-        width: 320px;
         box-sizing: border-box;
     }
+
+    #footer_info > ul > li:nth-child(1) { width: 400px; }
+    #footer_info > ul > li:nth-child(2) { width: 200px; }
+    #footer_info > ul > li:nth-child(3) { width: 200px; }
+    #footer_info > ul > li:nth-child(4) { width: 300px; }
 
     #footer_info > ul > li:first-child > ul { margin-bottom: 20px; }
 
@@ -1973,7 +1977,10 @@ a {
 
     #footer > ul {
         display: flex;
-        justify-content: space-evenly;
+        gap: 20px;
+
+        width: 405px;
+        margin: 0 auto;
 
         padding-top: 40px;
         margin-bottom: 40px;
@@ -1982,7 +1989,7 @@ a {
     }
 
     #footer > ul > li {
-        padding-right: 1rem;
+        padding-right: 20px;
         box-sizing: border-box;
 
         position: relative;
@@ -2001,6 +2008,10 @@ a {
 
     #footer > ul > li:last-child::after {
         display: none;
+    }
+
+    #footer > ul > li:last-child{
+        padding-right: 0;
     }
 
     #footer > p {
