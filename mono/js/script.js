@@ -27,6 +27,8 @@ $(function(){
 });
 
 
+
+
 // GNB(nav) megamenu
 $(function () {
   const $categorybtn = $('#category');
@@ -54,6 +56,7 @@ $(function () {
     }
   });
 });
+
 
 
 
@@ -85,6 +88,8 @@ $(function () {
 });
 
 
+
+
 // search form text-align left
 $(function () {
     const $q = $('#q');
@@ -99,6 +104,7 @@ $(function () {
         $(this).toggleClass('align-left', hasValue || document.activeElement === this);
     });
 })
+
 
 
 
@@ -118,6 +124,8 @@ $(function () {
 });
 
 
+
+
 // category
 $(function () {
   const $category = $('#category');
@@ -133,230 +141,244 @@ $(function () {
 
 
 
+
 // banner 
+// banner (3 breakpoints: <=767 / 768-1024 / >=1025)
 $(function () {
-  const $viewport  = $('#banner');         
-  const $track     = $('#banner > ul.mobile');   
-  const $dots      = $('#banner .indicator__dots button'); 
-  const COUNT      = $track.children('li').length;
+  const $banner = $('#banner');
 
-  const INTERVAL   = 5000;
+  const $trackMobile = $('#banner > ul.mobile');
+  const $trackWeb    = $('#banner > ul.web');
+
+  const $dotsWrap = $('#banner .indicator__dots'); // ul
+  const $prev = $('#banner-prev');
+  const $next = $('#banner-next');
+
+  const BP_MOBILE_MAX = 767;
+  const BP_TABLET_MAX = 1024;
+
+  // 모드별 autoplay 간격(원하면 조정)
+  const INTERVAL = {
+    mobile: 5000,
+    tablet: 6000,
+    web:    7000
+  };
+
+  let mode = null;          // 'mobile' | 'tablet' | 'web'
+  let $track = null;        // 현재 실제로 움직일 트랙
+  let count = 0;
   let current = 0;
-  let timer   = null;
+  let timer = null;
 
-  function updateDots(){
-    $dots.attr('aria-current', null)
-         .eq(current).attr('aria-current', 'true');
+  function getMode() {
+    const w = window.innerWidth;
+    if (w <= BP_MOBILE_MAX) return 'mobile';
+    if (w <= BP_TABLET_MAX) return 'tablet';
+    return 'web';
   }
 
-  function goTo(index){
-    current = (index + COUNT) % COUNT;
-    $track.css('margin-left', (-100 * current) + '%');
-    updateDots();
-  }
-
-  function start(){
-    if (timer) return;
-    timer = setInterval(() => goTo(current + 1), INTERVAL);
-  }
-  function stop(){
-    clearInterval(timer);
+  function clearTimer() {
+    if (timer) clearInterval(timer);
     timer = null;
   }
 
-  // 인디케이터 클릭 → 해당 인덱스로 이동
-  $dots.on('click', function(){
-    const idx = parseInt($(this).data('index'), 10) || 0;
-    goTo(idx);
-    stop(); start(); // 오토플레이 재시작(선택)
-  });
+  function buildDots() {
+    $dotsWrap.empty();
 
-  // 초기 상태
-  goTo(0);
-  start();
-});
+    for (let i = 0; i < count; i++) {
+      const $li = $('<li/>');
+      const $btn = $('<button/>', {
+        type: 'button',
+        'aria-label': (i + 1) + '번 슬라이드',
+        'data-index': i
+      });
 
-$(function () {
-  const $viewport  = $('#banner');         
-  const $track     = $('#banner > ul.web');   
-  const $dots      = $('#banner .indicator__dots button'); 
-  const COUNT      = $track.children('li').length;
-  const UNIT = 100 / COUNT;
-
-  const INTERVAL   = 7000;
-  let current = 0;
-  let timer   = null;
-
-  function updateDots(){
-    $dots.attr('aria-current', null)
-         .eq(current).attr('aria-current', 'true');
+      if (i === 0) $btn.attr('aria-current', 'true');
+      $li.append($btn);
+      $dotsWrap.append($li);
+    }
   }
 
-  function goTo(index){
-    current = (index + COUNT) % COUNT;
-    const offset = -UNIT * current; // 슬라이드 0, -100, -200 ...
+  function updateDots() {
+    $dotsWrap.find('button')
+      .removeAttr('aria-current')
+      .eq(current)
+      .attr('aria-current', 'true');
+  }
 
-    $track.css('transform', 'translateX(' + offset + '%)');
+  // 현재 모드에서 "한 칸" 이동 폭 계산
+  function getSlideWidth() {
+    // 배너 뷰포트 폭 기준(bleed 구조라면 banner가 viewport에 맞음)
+    return $banner.outerWidth();
+  }
+
+  function goTo(index) {
+    if (!count) return;
+
+    current = (index + count) % count;
+    const slideW = getSlideWidth();
+    const x = -slideW * current;
+
+    $track.css('transform', `translateX(${x}px)`);
     updateDots();
   }
 
-  function start(){
-    if (timer) return;
-    timer = setInterval(() => goTo(current + 1), INTERVAL);
-  }
-  function stop(){
-    clearInterval(timer);
-    timer = null;
+  function startAuto() {
+    clearTimer();
+    const ms = INTERVAL[mode] || 6000;
+    timer = setInterval(() => goTo(current + 1), ms);
   }
 
-  // 인디케이터 클릭 → 해당 인덱스로 이동
-  $dots.on('click', function(){
-    const idx = parseInt($(this).data('index'), 10) || 0;
-    goTo(idx);
-    stop(); start(); // 오토플레이 재시작(선택)
+  function bindEvents() {
+    // dots
+    $dotsWrap.off('click.banner').on('click.banner', 'button', function () {
+      const idx = parseInt($(this).data('index'), 10) || 0;
+      goTo(idx);
+      startAuto();
+    });
+
+    // prev/next
+    $prev.off('click.banner').on('click.banner', function () {
+      goTo(current - 1);
+      startAuto();
+    });
+
+    $next.off('click.banner').on('click.banner', function () {
+      goTo(current + 1);
+      startAuto();
+    });
+
+    /*
+    // (선택) PC(web)에서만 hover 일시정지
+    $banner.off('mouseenter.banner mouseleave.banner');
+    if (mode === 'web') {
+      $banner
+        .on('mouseenter.banner', clearTimer)
+        .on('mouseleave.banner', startAuto);
+    }
+    */
+  }
+
+  function setCSSForTrack() {
+    $track.css({
+      display: 'flex',
+      width: (count * 100) + '%',
+      willChange: 'transform',
+      transition: 'transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)'
+    });
+    $track.children('li').css({ width: (100 / count) + '%' });
+  }
+
+  function pickTrackByMode() {
+    // ✅ 너의 요구: tablet에서도 web 배너 사용
+    if (mode === 'mobile') return $trackMobile;
+    return $trackWeb; // tablet, web
+  }
+
+  function toggleTracksByMode() {
+    $trackMobile.css({
+      display: 'none',
+      transform: 'translateX(0px)'
+    });
+
+    $trackWeb.css({
+      display: 'none',
+      transform: 'translateX(0px)'
+    });
+
+    if (mode === 'mobile') {
+      $trackMobile.css('display', 'flex');
+    } else {
+      $trackWeb.css('display', 'flex');
+    }
+  }
+
+  function init() {
+    const newMode = getMode();
+
+    if (newMode === mode) {
+      $track = pickTrackByMode();
+      count = $track.children('li').length;
+      toggleTracksByMode();
+      // 같은 모드면 리사이즈 폭 변경만 반영
+      goTo(current);
+      return;
+    }
+
+    mode = newMode;
+    clearTimer();
+
+    $track = pickTrackByMode();
+    count = $track.children('li').length;
+    current = 0;
+
+    toggleTracksByMode();   // 추가
+    buildDots();
+    setCSSForTrack();
+    bindEvents();
+    goTo(0);
+    startAuto();
+  }
+
+  // 최초
+  init();
+
+  // 리사이즈
+  let resizeT = null;
+  $(window).on('resize.banner', function () {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(init, 150);
   });
-
-  // 초기 상태
-  goTo(0);
-  start();
 });
+
+
+
+
+// btn_like
+$(function () {
+  $('.btn_like').on('click', function () {
+    const $btn = $(this);
+    const isActive = $btn.toggleClass('is-active').hasClass('is-active');
+    $btn.attr('aria-pressed', isActive);
+  })
+})
+
 
 
 
 // new 영역
-/*
-$(function () {
-    const $viewport = $('#newCarousel');
-    const $track = $viewport.children('ul');
-    const $items = $track.children('li');
-    const $dots = $('#new .indicator__dots button');
-
-    const PER_PAGE = 2;
-    const pageCount = Math.ceil($items.length / PER_PAGE); // 총 페이지 수
-    let current = 0;
-    let autoplayTimer = null;
-    const AUTOPLAY_MS = 4000;   
-
-    // 페이지 이동
-    function goTo(page, animate=true){
-      current = Math.max(0, Math.min(page, pageCount - 1));
-      const vw = $viewport.innerWidth();
-      if (!animate) $track.css('transition', 'none');
-      $track.css('transform', `translateX(${-current * vw}px)`);
-      if (!animate) {
-        // 강제 리플로우 후 트랜지션 복구
-        $track[0].offsetHeight; 
-        $track.css('transition', '');
-      }
-      // 인디케이터 갱신
-      $dots.attr('aria-current', null).eq(current).attr('aria-current', 'true');
-    }   
-
-    // 인디케이터 클릭
-    $dots.on('click', function(){
-      const page = parseInt($(this).data('index'), 10) || 0;
-      goTo(page);
-      restartAutoplay();
-    }); 
-
-    // 반응형: 리사이즈/폰트/이미지 로드 후에도 위치 보정
-    function sync(){ goTo(current, false); }
-    $(window).on('resize', sync);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
-    $(window).on('load', sync); 
-
-    // ── 스와이프(터치/마우스 드래그) ─────────────────────────
-    let isPointerDown = false;
-    let startX = 0;
-    let deltaX = 0; 
-
-    $viewport.on('pointerdown', function(e){
-      isPointerDown = true;
-      startX = e.clientX;
-      deltaX = 0;
-      $viewport[0].setPointerCapture(e.pointerId);
-      // 드래그 중에는 트랜지션 비활성화
-      $track.css('transition', 'none');
-      stopAutoplay();
-    }); 
-
-    $viewport.on('pointermove', function(e){
-      if (!isPointerDown) return;
-      deltaX = e.clientX - startX;
-      const vw = $viewport.innerWidth();
-      const base = -current * vw;
-      $track.css('transform', `translateX(${base + deltaX}px)`);
-    }); 
-
-    function endSwipe(){
-      if (!isPointerDown) return;
-      isPointerDown = false;
-      $track.css('transition', 'transform .4s ease');
-      const vw = $viewport.innerWidth();
-      const THRESHOLD = vw * 0.15; // 15% 넘기면 페이지 전환
-      if (deltaX < -THRESHOLD) goTo(current + 1);
-      else if (deltaX > THRESHOLD) goTo(current - 1);
-      else goTo(current); // 스냅백
-      restartAutoplay();
-    }   
-
-    $viewport.on('pointerup pointercancel pointerleave', endSwipe); 
-
-    // ── 오토플레이 ─────────────────────────────────────────
-    function startAutoplay(){
-      if (autoplayTimer) return;
-      autoplayTimer = setInterval(() => {
-        goTo((current + 1) % pageCount);
-      }, AUTOPLAY_MS);
-    }
-
-    function stopAutoplay(){
-      clearInterval(autoplayTimer); autoplayTimer = null;
-    }
-
-    function restartAutoplay(){
-      stopAutoplay(); startAutoplay();
-    }   
-    
-    // 마우스 올리면 일시정지(모바일은 영향 없음)
-    $viewport.on('mouseenter', stopAutoplay)
-             .on('mouseleave', startAutoplay);  
-             
-    // 초기화
-    goTo(0, false);
-    startAutoplay();
-});
-*/
-
 $(function () {
   const $viewport = $('#newCarousel');
-  const $track = $viewport.children('ul');  
-  const $items = $track.children('li'); 
+  const $track = $viewport.children('ul');
+  const $items = $track.children('li');
 
-  const $indicator = $('#new .indicator');  
-  const $dotsWrap = $indicator.find('.indicator__dots'); 
-  const $prev = $('#new-prev');      
+  const $indicator = $('#new .indicator');
+  const $dotsWrap = $indicator.find('.indicator__dots');
+  const $prev = $('#new-prev');
   const $next = $('#new-next');
-  
-  let perPage = getPerPage();                             // 현재 뷰포트에서 한 번에 보일 개수
-  let pageCount = Math.max(1, Math.ceil($items.length / perPage)); // 총 페이지 수
+
+  let perPage = getPerPage();
+  // 현재 뷰포트에서 한 번에 보일 개수
+  let pageCount = Math.max(1, Math.ceil($items.length / perPage));
   let current = 0;
 
-   let autoplayTimer = null;
-  const AUTOPLAY_MS = 4000;
+  let autoplayTimer = null;
+  const AUTOPLAY_MS = 4500;
 
-  let $dots = $(); // 나중에 생성될 인디케이터 버튼들(jQuery 객체)
+  let $dots = $();            // 나중에 생성될 인디케이터 버튼들
+
+  function isDesktop() {
+    return window.innerWidth >= 1025;
+  }
 
   // 화면 너비에 따라 perPage 결정
-   function getPerPage() {
-    const w = window.innerWidth;
-    if (w >= 481) return 1;
-    return 2;                // 모바일
+  function getPerPage() {
+    return isDesktop() ? 1 : 2;
   }
 
   // 인디케이터 개수 다시 설정
   function buildDots() {
-    $dotsWrap.empty(); // 기존 인디케이터 제거
+    $dotsWrap.empty();        // 기존 인디케이터
 
     for (let i = 0; i < pageCount; i++) {
       const $btn = $('<button>', {
@@ -378,7 +400,7 @@ $(function () {
     $dots.off('click').on('click', function () {
       const idx = parseInt($(this).data('index'), 10) || 0;
       goTo(idx);
-      restartAutoplay();
+      updateAutoplayByViewport();
     });
   }
 
@@ -386,30 +408,30 @@ $(function () {
   function updatePagination() {
     const newPerPage = getPerPage();
 
-    // perPage가 그대로면 위치만 보정
-    if (newPerPage === perPage) {
-      goTo(current, false);
-      return;
+    if (newPerPage !== perPage) {
+      perPage = newPerPage;
+      pageCount = Math.max(1, Math.ceil($items.length / perPage));
+
+      if (current > pageCount - 1) {
+        current = pageCount - 1;
+      }
+
+      buildDots();
     }
 
-    perPage = newPerPage;
-    pageCount = Math.max(1, Math.ceil($items.length / perPage));
-
-    if (current > pageCount - 1) {
-      current = pageCount - 1;
-    }
-
-    buildDots();
     goTo(current, false);
+    updateAutoplayByViewport();
   }
 
   // 특정 페이지로 이동
   function goTo(page, animate = true) {
     current = Math.max(0, Math.min(page, pageCount - 1));
 
-    const vw = $viewport.innerWidth(); // 한 페이지 너비(뷰포트 폭 기준)
+    const vw = $viewport.innerWidth();                      // 한 페이지 너비(뷰포트 폭 기준)
 
-    if (!animate) $track.css('transition', 'none');
+    if (!animate) {
+      $track.css('transition', 'none');
+    }
 
     $track.css('transform', 'translateX(' + (-current * vw) + 'px)');
 
@@ -421,8 +443,32 @@ $(function () {
 
     // 인디케이터 aria-current 갱신
     if ($dots.length) {
-      $dots.attr('aria-current', null)
+      $dots.removeAttr('aria-current')
            .eq(current).attr('aria-current', 'true');
+    }
+  }
+
+  // 오토플레이
+  function startAutoplay() {
+    if (!isDesktop()) return;
+    if (autoplayTimer) return;
+
+    autoplayTimer = setInterval(function () {
+      const nextIndex = (current + 1) % pageCount;
+      goTo(nextIndex);
+    }, AUTOPLAY_MS);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  }
+
+  function updateAutoplayByViewport() {
+    if (isDesktop()) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
     }
   }
 
@@ -430,18 +476,18 @@ $(function () {
   if ($prev.length) {
     $prev.on('click', function () {
       goTo((current - 1 + pageCount) % pageCount);
-      restartAutoplay();
+      updateAutoplayByViewport();
     });
   }
 
   if ($next.length) {
     $next.on('click', function () {
       goTo((current + 1) % pageCount);
-      restartAutoplay();
+      updateAutoplayByViewport();
     });
   }
 
-   // 스와이프(모바일 드래그)
+  // 스와이프
   let isPointerDown = false;
   let startX = 0;
   let deltaX = 0;
@@ -456,11 +502,15 @@ $(function () {
     }
 
     $track.css('transition', 'none');
-    stopAutoplay();
+
+    if (isDesktop()) {
+      stopAutoplay();
+    }
   });
 
   $viewport.on('pointermove', function (e) {
     if (!isPointerDown) return;
+
     deltaX = e.clientX - startX;
 
     const vw = $viewport.innerWidth();
@@ -469,52 +519,28 @@ $(function () {
     $track.css('transform', 'translateX(' + (base + deltaX) + 'px)');
   });
 
-  function endSwipe(e) {
+  function endSwipe() {
     if (!isPointerDown) return;
     isPointerDown = false;
 
     $track.css('transition', 'transform .4s ease');
 
     const vw = $viewport.innerWidth();
-    const THRESHOLD = vw * 0.15; // 15% 이상 드래그하면 다음/이전 페이지
+    const THRESHOLD = vw * 0.15;
 
     if (deltaX < -THRESHOLD) {
       goTo(current + 1);
     } else if (deltaX > THRESHOLD) {
       goTo(current - 1);
     } else {
-      goTo(current); // 스냅백
+      goTo(current);
     }
 
-    restartAutoplay();
+    updateAutoplayByViewport();
   }
 
   $viewport.on('pointerup pointercancel pointerleave', endSwipe);
 
-  // 오토플레이
-  function startAutoplay() {
-    if (autoplayTimer) return;
-    autoplayTimer = setInterval(function () {
-      goTo((current + 1) % pageCount);
-    }, AUTOPLAY_MS);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayTimer);
-    autoplayTimer = null;
-  }
-
-  function restartAutoplay() {
-    stopAutoplay();
-    startAutoplay();
-  }
-
-  // 마우스 올라가면 일시정지(PC용)
-  $viewport
-    .on('mouseenter', stopAutoplay)
-    .on('mouseleave', startAutoplay);
-
-  // 8. 리사이즈 / 폰트 로드 때 위치 보정
   function sync() {
     updatePagination();
   }
@@ -527,12 +553,11 @@ $(function () {
     $(window).on('load', sync);
   }
 
-  // 9. 초기 실행
   buildDots();
   goTo(0, false);
-  startAutoplay();
+  updateAutoplayByViewport();
+});
 
-})
 
 
 
@@ -548,6 +573,11 @@ document.addEventListener("DOMContentLoaded", function () {
           moreBtn.textContent = "접기";
       } else {
           moreBtn.textContent = "더보기";
+
+          moreBtn.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+          })
       }
   });
 });
@@ -556,107 +586,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // review 영역
-/*
-$(function () {
-  const $viewport = $('#review > div');
-  const $track    = $viewport.children('ul');
-  const $items    = $track.children('li');
-  const $dots     = $('#review .indicator__dots button');
-
-  const PER_PAGE = 2;
-  const pageCount = Math.ceil($items.length / PER_PAGE);
-  let current = 0;
-  let autoplayTimer = null;
-  const AUTOPLAY_MS = 4000;
-
-  // 해당 페이지의 첫 li가 트랙 왼쪽에서 떨어진 실제 px
-  function pageOffset(page) {
-    const idx = Math.min(page * PER_PAGE, $items.length - 1);
-    const el  = $items.get(idx);
-    return el ? el.offsetLeft : 0;
-  }
-  // 현재 뷰포트 실제 폭(소수점 포함)
-  function pageWidth() {
-    return $viewport[0].getBoundingClientRect().width;
-  }
-
-  function goTo(page, animate = true) {
-    current = Math.max(0, Math.min(page, pageCount - 1));
-    const x = pageOffset(current);
-
-    if (!animate) $track.css('transition', 'none');
-    $track.css('transform', `translate3d(${-x}px,0,0)`);
-    if (!animate) { $track[0].offsetHeight; $track.css('transition', ''); }
-
-    // 인디케이터 갱신
-    $dots.attr('aria-current', null).eq(current).attr('aria-current', 'true');
-  }
-
-  // 인디케이터 클릭
-  $dots.on('click', function () {
-    const page = parseInt($(this).data('index'), 10) || 0;
-    goTo(page);
-    restartAutoplay();
-  });
-
-  // 리사이즈/폰트 로딩 후 위치 보정
-  function sync() { goTo(current, false); }
-  $(window).on('resize', sync);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
-  $(window).on('load', sync);
-
-  // ── 스와이프 ──
-  let isDown = false, startX = 0, deltaX = 0;
-
-  // 수평 스와이프 인식이 잘 되도록(세로 스크롤 허용)
-  $viewport.css('touch-action', 'pan-y');
-
-  $viewport.on('pointerdown', function (e) {
-    isDown = true;
-    startX = e.clientX;
-    deltaX = 0;
-    this.setPointerCapture(e.pointerId);
-    $track.css('transition', 'none');
-    stopAutoplay();
-  });
-
-  $viewport.on('pointermove', function (e) {
-    if (!isDown) return;
-    deltaX = e.clientX - startX;
-    const base = -pageOffset(current);
-    $track.css('transform', `translate3d(${base + deltaX}px,0,0)`);
-  });
-
-  function endSwipe() {
-    if (!isDown) return;
-    isDown = false;
-    $track.css('transition', 'transform .4s ease');
-
-    const THRESHOLD = pageWidth() * 0.15; // 15% 넘어가면 전환
-    if (deltaX < -THRESHOLD)      goTo(current + 1);
-    else if (deltaX > THRESHOLD)  goTo(current - 1);
-    else                          goTo(current); // 스냅백
-
-    restartAutoplay();
-  }
-  $viewport.on('pointerup pointercancel pointerleave', endSwipe);
-
-  // ── 오토플레이 ──
-  function startAutoplay() {
-    if (autoplayTimer) return;
-    autoplayTimer = setInterval(() => {
-      goTo((current + 1) % pageCount);
-    }, AUTOPLAY_MS);
-  }
-  function stopAutoplay()   { clearInterval(autoplayTimer); autoplayTimer = null; }
-  function restartAutoplay(){ stopAutoplay(); startAutoplay(); }
-
-  // 초기화
-  goTo(0, false);
-  startAutoplay();
-});
-*/
-
 $(function () {
   const $viewport = $('#review > div');
   const $track    = $viewport.children('ul');

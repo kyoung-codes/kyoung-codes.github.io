@@ -14,13 +14,15 @@
         <header id="header">
             <button type="button" id="open" class="mobile" aria-controls="sidebar" aria-label="사이드바 열기"></button>
             
-            <h1><a href="#"><img src="images/logo.png" alt="모노하우스 로고"></a></h1>
+            <div id="header_left">
+                <h1><a href="#"><img src="images/logo.png" alt="모노하우스 로고"></a></h1>
+    
+                <form id="search" class="web" role="search" aria-label="제품 검색">
+                        <input id="q_web" name="q" type="text" placeholder="검색">
+                </form> <!--#search_box-->
+            </div>
 
-            <form id="search" class="web" role="search" aria-label="제품 검색">
-                    <input id="q_web" name="q" type="text" placeholder="검색">
-            </form> <!--#search_box-->
-
-            <div>
+            <div id="header_right">
                 <button type="button" id="wish" class="web"  aria-label="찜 열기"></button>
                 <button type="button" id="shopping_cart" aria-label="장바구니 열기"></button>
                 <button type="button" id="mypage" class="web" aria-label="마이페이지"></button>
@@ -28,6 +30,7 @@
         </header> <!--#header-->
 
         <nav id="nav" class="web">
+            
             <button type="button" id="category" aria-controls="megamenu" aria-label="카테고리 버튼" aria-expanded="false">카테고리</button>
 
             <ul id="main_nav">
@@ -192,6 +195,7 @@
                 </div> <!--#accordian-->
     
                 <h3>커뮤니티</h3>
+                
                 <ul>
                     <li><a href="#">NOTICE</a></li>
                     <li><a href="#">Q&A</a></li>
@@ -222,6 +226,11 @@
                         <li><button type="button" aria-label="3번 슬라이드" data-target="#banner" data-index="2"></button></li>
                     </ul>
                 </nav>
+
+                <div id="banner_control" class="web">
+                    <button type="button" id="banner-prev" aria-label="이전 배너"></button>
+                    <button type="button" id="banner-next" aria-label="다음 배너"></button>
+                </div>
             </section> <!--#banner-->
 
             <section id="guide">
@@ -254,7 +263,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions mobile">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -276,7 +285,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -299,7 +308,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -322,7 +331,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -344,7 +353,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -366,7 +375,7 @@
                                 </a>
                                 <a href="#" class="web">더보기</a>
                                 <div class="product_actions">
-                                    <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                    <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                     <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                                 </div> <!--.product_actions-->
                             </div> <!--.new_product_info-->
@@ -396,7 +405,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_1.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(크림화이트)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -416,7 +425,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_2.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(밀크베이지)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -436,7 +445,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_3.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(그레이)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -456,7 +465,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_4.png" alt="[알러지케어]시그니처 100수 크림화이트 차렵침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -476,7 +485,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_5.png" alt="[알러지케어]시그니처 100수 밀크베이지 차렵침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -496,7 +505,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_6.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(크림아이보리)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -516,7 +525,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_7.png" alt="[알러지케어]시그니처 100수 고밀도 호텔침구(딥그린)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -536,7 +545,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_8.png" alt="스틸 모달 화이트 차렵이불(Q/K.LK.EK)"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -556,7 +565,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_9.png" alt="[알러지케어]리본 고밀도 호텔 차렵침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -576,7 +585,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_10.png" alt="프리미엄 모달 화이트 호텔침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -596,7 +605,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_11.png" alt="프리미엄 모달 아이보리 침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -616,7 +625,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_12.png" alt="프리미엄 모달 베이지 호텔침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -636,7 +645,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_13.png" alt="프리미엄 모달 핑크그레이 침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -656,7 +665,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_14.png" alt="[알러지케어]60수 고밀도 크림화이트 호텔침구"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -676,7 +685,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_15.png" alt="[모달100%]마시멜로우 크림화이트 차렵이불[SS/Q/K/LK]"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
@@ -696,7 +705,7 @@
                         <div class="best_product_img">
                             <a href="#" class="best_product_thumb hover-zoom"><img src="images/best_16.png" alt="[모달100%]마시멜로우 블루그레이 차렵이불[SS/Q/K/LK]"></a>
                             <div class="product_actions_hover">
-                                <button type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
+                                <button class="btn_like" type="button" aria-pressed="false" aria-label="위시리스트에 담기"></button>
                                 <button type="button" aria-pressed="false" aria-label="장바구니에 담기"></button>
                             </div> <!--.product_actions_hover-->
                         </div> <!--.best_product_img-->
