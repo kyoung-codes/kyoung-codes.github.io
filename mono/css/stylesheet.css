@@ -766,7 +766,7 @@ header, main, footer, aside, section {
     border-top: 1px solid #afafaf;
 }
 
-#footer_info { margin-bottom: 24px; }
+#footer_info { margin-bottom: 40px; }
 
 #footer_info > ul {
     display: flex;
@@ -2151,6 +2151,23 @@ header, main, footer, aside, section {
 
     #best:not(.expanded) > ul > li:nth-child(n+9) { display: none; }
 
+
+
+    /* footer 영역 */
+    #footer {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #footer_info > ul > li:nth-child(1) { 
+        display: block;
+        width: 400px; 
+    }
+    #footer_info > ul > li:nth-child(2) { width: 200px; }
+    #footer_info > ul > li:nth-child(3) { width: 200px; }
+    #footer_info > ul > li:nth-child(4) { width: 300px; }
+
+    #footer > ul > li.mobile { display: none;}
 
 }
 
