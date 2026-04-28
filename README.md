@@ -3,7 +3,7 @@
 Welcome to my web portfolio! This project showcases my journey as a [Web Designer/Developer].
 
 ## 🚀 Live Demo
-[여기에 링크 주소를 넣으세요 (예: https://yourname.github.io)]
+[여기에 링크 주소를 넣으세요 (예: https://kyoung-codes.github.io)]
 
 ## 📁 What's Inside?
 - **Resume:** My professional background and skills.
